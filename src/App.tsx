@@ -170,7 +170,7 @@ function App() {
                     <th className="p-3 min-w-[160px] text-sm sm:text-base font-semibold text-muted-foreground hidden sm:table-cell">
                       Name
                     </th>
-                    <th className="p-3 min-w-[60px] text-sm sm:text-base font-semibold text-muted-foreground">
+                    <th className="p-3 min-w-[60px] text-sm sm:text-base font-semibold text-muted-foreground text-center">
                       Credits
                     </th>
                     <th className="p-3 min-w-[120px] text-sm text-center sm:text-base font-semibold text-muted-foreground">
@@ -195,18 +195,50 @@ function App() {
                       <td className="p-4 text-sm font-semibold sm:text-base text-center">
                         {sub.credits}
                       </td>
-                      <td className="p-4 text-sm sm:text-base">
-                        <td className="p-4">
-                          <div className="flex items-center justify-between w-[105px] px-3 py-2 rounded-md bg-muted border border-border text-gray-900 dark:text-white">
-                            <span className="truncate">
-                              {grades[sub.code] || 'Grade'}
-                            </span>
+                        <td className="p-4 text-center">
 
+                          {/* Mobile version: only icon is clickable */}
+                          <div className="block md:hidden">
+                            <div className="flex items-center justify-between w-[105px] px-3 py-2 rounded-md bg-muted border border-border text-gray-900 dark:text-white">
+                              <span className="truncate">
+                                {grades[sub.code] || 'Grade'}
+                              </span>
+                              <DropdownMenu>
+                                <DropdownMenuTrigger asChild>
+                                  <button className="ml-2">
+                                    <ChevronDown className="h-4 w-4 opacity-70" />
+                                  </button>
+                                </DropdownMenuTrigger>
+                                <DropdownMenuContent className="w-[80px] bg-popover border-border">
+                                  {gradeOptions.map((grade) => (
+                                    <DropdownMenuItem
+                                      key={grade}
+                                      onSelect={() =>
+                                        setGrades((prev) => ({
+                                          ...prev,
+                                          [sub.code]: grade,
+                                        }))
+                                      }
+                                      className="hover:bg-accent focus:bg-accent"
+                                    >
+                                      {grade}
+                                    </DropdownMenuItem>
+                                  ))}
+                                </DropdownMenuContent>
+                              </DropdownMenu>
+                            </div>
+                          </div>
+
+                          {/* Desktop version: whole button is clickable */}
+                          <div className="hidden md:block">
                             <DropdownMenu>
                               <DropdownMenuTrigger asChild>
-                                <button className="ml-2">
-                                  <ChevronDown className="h-4 w-4 opacity-70" />
-                                </button>
+                                <Button className="w-[105px] justify-between bg-muted border-border hover:bg-accent text-gray-900 dark:text-white">
+                                  <span className="truncate">
+                                    {grades[sub.code] || 'Grade'}
+                                  </span>
+                                  <ChevronDown className="h-4 w-4 ml-2 opacity-70" />
+                                </Button>
                               </DropdownMenuTrigger>
                               <DropdownMenuContent className="w-[80px] bg-popover border-border">
                                 {gradeOptions.map((grade) => (
@@ -227,7 +259,6 @@ function App() {
                             </DropdownMenu>
                           </div>
                         </td>
-                      </td>
                     </tr>
                   ))}
                 </tbody>
