@@ -4,6 +4,11 @@ import { Button } from './components/ui/button'
 import { ChevronDown } from 'lucide-react'
 import { useEffect } from 'react'
 import { subjectData } from './data/subjects'
+import { gradeOptions } from './data/grades'
+import { faculties } from './data/faculties'
+import { degrees } from './data/degrees'
+import { gradePoints } from './data/gradePoints'
+import { semesters } from './data/semesters'
 import { useTheme } from './components/theme-provider'
 import { Sun, Moon } from 'lucide-react'
 import {
@@ -38,64 +43,6 @@ function App() {
     }
   }, [facultySelected, degreeSelected, semSelected])
 
-  const faculties = [
-    'Computing',
-    'Geomatics',
-    'Applied Sciences',
-    'Management Studies',
-    'Medicine',
-    'Management Studies',
-    'Technology',
-    'Agricultural Sciences',
-    'Social Sciences and Languages',
-  ]
-
-  const degrees = [
-    'Computing and Information Systems',
-    'Software Engineering',
-    'Data Science',
-    'Infomation Systems',
-  ]
-
-  const semesters = [
-    'Semester 1',
-    'Semester 2',
-    'Semester 3',
-    'Semester 4',
-    'Semester 5',
-    'Semester 6',
-    'Semester 7',
-    'Semester 8',
-  ]
-
-  const gradeOptions = [
-    'A+',
-    'A',
-    'A-',
-    'B+',
-    'B',
-    'B-',
-    'C+',
-    'C',
-    'C-',
-    'D',
-    'F',
-  ]
-
-  const gradePoints: Record<string, number> = {
-    'A+': 4.0,
-    'A': 4.0,
-    'A-': 3.7,
-    'B+': 3.3,
-    'B': 3.0,
-    'B-': 2.7,
-    'C+': 2.3,
-    'C': 2.0,
-    'C-': 1.7,
-    'D': 1.0,
-    'F': 0.0,
-  }
-
   const calculateGPA = () => {
     let totalCredits = 0
     let totalPoints = 0
@@ -110,156 +57,189 @@ function App() {
       }
     })
 
-    return totalCredits === 0 ? 0 : (totalPoints / totalCredits).toFixed(2)
+    return totalCredits === 0 ? 0 : (totalPoints / totalCredits).toFixed(3)
   }
   const allGradesSelected = subjects.every((sub) => grades[sub.code])
-  
 
   return (
-    <>
-      <div className="flex justify-between items-center p-4">
-        <h1 className="text-2xl font-bold">GPA Cal</h1>
-        <button
-          onClick={toggleTheme}
-          className="p-2 rounded-full border dark:border-gray-600"
-        >
-          {theme === 'dark' ? (
-            <Sun className="w-5 h-5" />
-          ) : (
-            <Moon className="w-5 h-5" />
-          )}
-        </button>
-      </div>
-      <div className="flex justify-end items-start gap-4">
-        <div id="faculty">
-          <DropdownMenu>
-            <DropdownMenuTrigger asChild>
-              <Button className="w-72 justify-between">
-                <span className="truncate">{facultySelected}</span>
-                <ChevronDown className="h-4 w-4 ml-2 opacity-70" />
-              </Button>
-            </DropdownMenuTrigger>
-            <DropdownMenuContent className="min-w-[var(--radix-dropdown-menu-trigger-width)]">
-              {faculties.map((option) => (
-                <DropdownMenuItem
-                  key={option}
-                  onSelect={() => {
-                    setFacultySelected(option)
-                  }}
-                >
-                  {option}
-                </DropdownMenuItem>
-              ))}
-            </DropdownMenuContent>
-          </DropdownMenu>
+    <div className="min-h-screen bg-background text-foreground transition-colors duration-300">
+      <div className="container mx-auto p-6">
+        {/* Header */}
+        <div className="flex justify-between items-center mb-8">
+          <h1 className="text-3xl font-bold text-foreground">GPA Cal</h1>
+          <button
+            onClick={toggleTheme}
+            className="p-3 rounded-full border border-border bg-card hover:bg-accent transition-colors duration-200 shadow-sm"
+          >
+            {theme === 'dark' ? (
+              <Sun className="w-5 h-5 text-yellow-500" />
+            ) : (
+              <Moon className="w-5 h-5 text-blue-600" />
+            )}
+          </button>
         </div>
 
-        <div id="degree">
-          <DropdownMenu>
-            <DropdownMenuTrigger asChild>
-              <Button className="w-72 justify-between">
-                <span className="truncate">{degreeSelected}</span>
-                <ChevronDown className="h-4 w-4 ml-2 opacity-70" />
-              </Button>
-            </DropdownMenuTrigger>
-            <DropdownMenuContent className="w-82">
-              {degrees.map((option) => (
-                <DropdownMenuItem
-                  key={option}
-                  onSelect={() => {
-                    setDegreeSelected(option)
-                  }}
-                >
-                  {option}
-                </DropdownMenuItem>
-              ))}
-            </DropdownMenuContent>
-          </DropdownMenu>
+        {/* Dropdowns */}
+        <div className="flex flex-wrap justify-center items-start gap-4 mb-8">
+          <div id="faculty">
+            <DropdownMenu>
+              <DropdownMenuTrigger asChild>
+                <Button className="w-72 justify-between bg-muted border-border hover:bg-accent text-muted-foreground">
+                  <span className="truncate">{facultySelected}</span>
+                  <ChevronDown className="h-4 w-4 ml-2 opacity-70" />
+                </Button>
+              </DropdownMenuTrigger>
+              <DropdownMenuContent className="min-w-[var(--radix-dropdown-menu-trigger-width)] bg-popover border-border">
+                {faculties.map((option) => (
+                  <DropdownMenuItem
+                    key={option}
+                    onSelect={() => {
+                      setFacultySelected(option)
+                    }}
+                    className="hover:bg-accent focus:bg-accent"
+                  >
+                    {option}
+                  </DropdownMenuItem>
+                ))}
+              </DropdownMenuContent>
+            </DropdownMenu>
+          </div>
+
+          <div id="degree">
+            <DropdownMenu>
+              <DropdownMenuTrigger asChild>
+                <Button className="w-72 justify-between bg-muted border-border hover:bg-accent text-muted-foreground">
+                  <span className="truncate">{degreeSelected}</span>
+                  <ChevronDown className="h-4 w-4 ml-2 opacity-70" />
+                </Button>
+              </DropdownMenuTrigger>
+              <DropdownMenuContent className="w-82 bg-popover border-border">
+                {degrees.map((option) => (
+                  <DropdownMenuItem
+                    key={option}
+                    onSelect={() => {
+                      setDegreeSelected(option)
+                    }}
+                    className="hover:bg-accent focus:bg-accent"
+                  >
+                    {option}
+                  </DropdownMenuItem>
+                ))}
+              </DropdownMenuContent>
+            </DropdownMenu>
+          </div>
+
+          <div id="sem">
+            <DropdownMenu>
+              <DropdownMenuTrigger asChild>
+                <Button className="w-72 justify-between bg-muted border-border hover:bg-accent text-muted-foreground">
+                  <span className="truncate">{semSelected}</span>
+                  <ChevronDown className="h-4 w-4 ml-2 opacity-70" />
+                </Button>
+              </DropdownMenuTrigger>
+              <DropdownMenuContent className="w-72 bg-popover border-border">
+                {semesters.map((option) => (
+                  <DropdownMenuItem
+                    key={option}
+                    onSelect={() => {
+                      setSemSelected(option)
+                    }}
+                    className="hover:bg-accent focus:bg-accent"
+                  >
+                    {option}
+                  </DropdownMenuItem>
+                ))}
+              </DropdownMenuContent>
+            </DropdownMenu>
+          </div>
         </div>
 
-        <div id="sem">
-          <DropdownMenu>
-            <DropdownMenuTrigger asChild>
-              <Button className="w-72 justify-between">
-                <span className="truncate">{semSelected}</span>
-                <ChevronDown className="h-4 w-4 ml-2 opacity-70" />
-              </Button>
-            </DropdownMenuTrigger>
-            <DropdownMenuContent className="w-72">
-              {semesters.map((option) => (
-                <DropdownMenuItem
-                  key={option}
-                  onSelect={() => {
-                    setSemSelected(option)
-                  }}
-                >
-                  {option}
-                </DropdownMenuItem>
-              ))}
-            </DropdownMenuContent>
-          </DropdownMenu>
-        </div>
-      </div>
-      <div>
+        {/* Subjects Table */}
         {subjects.length > 0 && (
           <div className="mt-6 w-full">
-            <h2 className="text-xl font-semibold mb-4">Subjects</h2>
-            <table className="w-full text-left border border-gray-200 dark:border-gray-700 rounded-md">
-              <thead>
-                <tr className="bg-gray-100 dark:bg-gray-800">
-                  <th className="p-2">Code</th>
-                  <th className="p-2">Name</th>
-                  <th className="p-2">Credits</th>
-                  <th className="p-2">Your Grade</th>
-                </tr>
-              </thead>
-              <tbody>
-                {subjects.map((sub) => (
-                  <tr
-                    key={sub.code}
-                    className="border-t border-gray-200 dark:border-gray-700"
-                  >
-                    <td className="p-2">{sub.code}</td>
-                    <td className="p-2">{sub.name}</td>
-                    <td className="p-2">{sub.credits}</td>
-                    <td className="p-2">
-                      <DropdownMenu>
-                        <DropdownMenuTrigger asChild>
-                          <Button className="w-[105px] justify-between">
-                            <span className="truncate">
-                              {grades[sub.code] || 'Grade'}
-                            </span>
-                            <ChevronDown className="h-4 w-4 ml-2 opacity-70" />
-                          </Button>
-                        </DropdownMenuTrigger>
-                        <DropdownMenuContent className="w-[80px]">
-                          {gradeOptions.map((grade) => (
-                            <DropdownMenuItem
-                              key={grade}
-                              onSelect={() =>
-                                setGrades((prev) => ({
-                                  ...prev,
-                                  [sub.code]: grade,
-                                }))
-                              }
-                            >
-                              {grade}
-                            </DropdownMenuItem>
-                          ))}
-                        </DropdownMenuContent>
-                      </DropdownMenu>
-                    </td>
+            <h2 className="text-2xl font-semibold mb-6 text-foreground">
+              Subjects
+            </h2>
+            <div className="overflow-x-auto rounded-lg border border-border shadow-sm">
+              <table className="w-full text-left bg-card">
+                <thead>
+                  <tr className="bg-muted border-b border-border">
+                    <th className="p-4 font-semibold text-muted-foreground">
+                      Code
+                    </th>
+                    <th className="p-4 font-semibold text-muted-foreground">
+                      Name
+                    </th>
+                    <th className="p-4 font-semibold text-muted-foreground">
+                      Credits
+                    </th>
+                    <th className="p-4 font-semibold text-muted-foreground">
+                      Your Grade
+                    </th>
                   </tr>
-                ))}
-              </tbody>
-            </table>
+                </thead>
+                <tbody>
+                  {subjects.map((sub, index) => (
+                    <tr
+                      key={sub.code}
+                      className={`border-b border-border hover:bg-accent/50 transition-colors ${
+                        index % 2 === 0 ? 'bg-card' : 'bg-muted/30'
+                      }`}
+                    >
+                      <td className="p-4 font-mono text-sm">{sub.code}</td>
+                      <td className="p-4">{sub.name}</td>
+                      <td className="p-4 font-semibold">{sub.credits}</td>
+                      <td className="p-4">
+                        <DropdownMenu>
+                          <DropdownMenuTrigger asChild>
+                            <Button className="w-[105px] justify-between bg-muted border-border hover:bg-accent text-gray-900 dark:text-white">
+                              <span className="truncate">
+                                {grades[sub.code] || 'Grade'}
+                              </span>
+                              <ChevronDown className="h-4 w-4 ml-2 opacity-70" />
+                            </Button>
+                          </DropdownMenuTrigger>
+                          <DropdownMenuContent className="w-[80px] bg-popover border-border">
+                            {gradeOptions.map((grade) => (
+                              <DropdownMenuItem
+                                key={grade}
+                                onSelect={() =>
+                                  setGrades((prev) => ({
+                                    ...prev,
+                                    [sub.code]: grade,
+                                  }))
+                                }
+                                className="hover:bg-accent focus:bg-accent"
+                              >
+                                {grade}
+                              </DropdownMenuItem>
+                            ))}
+                          </DropdownMenuContent>
+                        </DropdownMenu>
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </div>
+        )}
+
+        {/* GPA Result */}
+        {subjects.length > 0 && allGradesSelected && (
+          <div className="mt-8 p-6 bg-card border border-border rounded-lg shadow-sm">
+            <div className="text-center">
+              <h3 className="text-lg font-medium text-muted-foreground mb-2">
+                Your GPA
+              </h3>
+              <div className="text-4xl font-bold text-primary">
+                {calculateGPA()}
+              </div>
+            </div>
           </div>
         )}
       </div>
-      {subjects.length > 0 && allGradesSelected && (
-        <div className="mt-4 text-lg font-semibold">GPA: {calculateGPA()}</div>
-      )}
-    </>
+    </div>
   )
 }
 
