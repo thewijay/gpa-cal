@@ -3,20 +3,19 @@
 A clean and user-friendly GPA calculator that simplifies the process of tracking academic progress — no backend, no login, just a smooth in-browser experience.
 
 ![Screenshot of GPA Calculator]
-[url=https://postimg.cc/TLjJf5tx][img]https://i.postimg.cc/TLjJf5tx/Screenshot-20250602-180721.png[/img][/url]
+(url=https://postimg.cc/TLjJf5tx)
 
-[url=https://postimg.cc/G49KG2mP][img]https://i.postimg.cc/G49KG2mP/Screenshot-20250602-180908.png[/img][/url]
+(url=https://postimg.cc/G49KG2mP)
 
-[url=https://postimg.cc/QHfSF5hx][img]https://i.postimg.cc/QHfSF5hx/Screenshot-20250602-180939.png[/img][/url]
+(url=https://postimg.cc/QHfSF5hx)
 
-[url=https://postimg.cc/2Vk2jTpK][img]https://i.postimg.cc/2Vk2jTpK/Screenshot-20250602-181206.png[/img][/url]
+(url=https://postimg.cc/2Vk2jTpK)
 
-[url=https://postimg.cc/bdHmjW5n][img]https://i.postimg.cc/bdHmjW5n/Screenshot-20250602-181242.png[/img][/url]
+(url=https://postimg.cc/bdHmjW5n)
 
-[url=https://postimg.cc/ZvcBDrV9][img]https://i.postimg.cc/ZvcBDrV9/Screenshot-20250602-181447.png[/img][/url]
+(url=https://postimg.cc/ZvcBDrV9)
 
-[url=https://postimg.cc/rDYWkNcx][img]https://i.postimg.cc/rDYWkNcx/Screenshot-20250602-181514.png[/img][/url]
-
+(url=https://postimg.cc/rDYWkNcx)
 
 ---
 
@@ -32,14 +31,16 @@ A clean and user-friendly GPA calculator that simplifies the process of tracking
 
 ## 🔧 Tech Stack
 
-- **React** (with [Vite](https://vitejs.dev/))  
-- **TypeScript**  
-- **Tailwind CSS**  
+- **React** (with [Vite](https://vitejs.dev/))
+- **TypeScript**
+- **Tailwind CSS**
 - **LocalStorage** for data persistence
 
 ---
 
 ## 📂 Project Structure
+
+```
 .
 ├── public/                 # Static assets
 ├── src/
@@ -51,6 +52,7 @@ A clean and user-friendly GPA calculator that simplifies the process of tracking
 │   └── App.tsx             # Root component
 ├── README.md
 └── package.json
+```
 
 ---
 
