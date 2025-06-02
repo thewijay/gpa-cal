@@ -21,6 +21,7 @@ import {
 function Grades() {
   const [gpa, setGPA] = useState<string | number>('')
   const navigate = useNavigate()
+  
 
   const handleSave = () => {
 
@@ -30,8 +31,8 @@ function Grades() {
     }
 
     const newEntry = {
-      semester:semSelected,
-      gpa: parseFloat(gpa),
+      semester: semSelected,
+      gpa: parseFloat(String(gpa)),
       subjects: subjects.length,
     }
     // Get existing data from localStorage
@@ -65,11 +66,13 @@ function Grades() {
   >([])
   const [grades, setGrades] = useState<Record<string, string>>({})
   const { theme, toggleTheme } = useTheme()
-
+  
   useEffect(() => {
     if (facultySelected && degreeSelected && semSelected) {
       const subs =
-        subjectData[facultySelected]?.[degreeSelected]?.[semSelected] || []
+        (subjectData as any)?.[facultySelected]?.[degreeSelected]?.[
+          semSelected
+        ] || []
       setSubjects(subs)
       setGrades({})
     }

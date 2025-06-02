@@ -1,3 +1,21 @@
+type Subject = {
+  code: string
+  name: string
+  credits: number
+}
+
+type SemesterMap = {
+  [semester: string]: Subject[]
+}
+
+type DegreeMap = {
+  [degree: string]: SemesterMap
+}
+
+type FacultyMap = {
+  [faculty: string]: DegreeMap
+}
+
 export const subjectData = {
   Computing: {
     'Computing and Information Systems': {
