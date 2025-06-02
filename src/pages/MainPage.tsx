@@ -65,16 +65,16 @@ const MainPage = () => {
 
         {/* GPA Table */}
         <div className="w-full overflow-x-auto rounded-lg border border-border shadow-sm mb-6">
-          <table className="min-w-full text-left bg-card text-sm sm:text-base table-auto">
+          <table className="min-w-full text-left bg-card text-sm sm:text-base">
             <thead>
               <tr className="bg-muted border-b border-border">
-                <th className="font-semibold p-3 min-w-[180px] sm:min-w-[200px] border">
+                <th className="font-semibold p-3 min-w-[120px] sm:min-w-[200px] border">
                   Semester
                 </th>
-                <th className="font-semibold p-3 min-w-[120px] sm:min-w-[150px] text-center border">
+                <th className="font-semibold p-3 min-w-[100px] sm:min-w-[150px] text-center border">
                   GPA
                 </th>
-                <th className="font-semibold p-3 min-w-[120px] sm:min-w-[150px] text-center border">
+                <th className="font-semibold p-3 min-w-[100px] sm:min-w-[150px] text-center border">
                   Subjects
                 </th>
               </tr>
@@ -97,7 +97,7 @@ const MainPage = () => {
           </table>
         </div>
 
-        <div className="flex flex-col-reverse sm:flex-row justify-evenly gap-4 sm:gap-16 mt-4 mx-4 sm:mx-8">
+        <div className="flex flex-col-reverse sm:flex-row justify-evenly gap-4 sm:gap-16 mt-4 mx-2 sm:mx-8">
           <button
             onClick={handleClearData}
             className="flex-1 bg-red-600 text-sm text-white px-4 py-2 rounded hover:bg-red-700 transition text-center"
