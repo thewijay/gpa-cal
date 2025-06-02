@@ -2,6 +2,9 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import './App.css'
 import MainPage from './pages/MainPage'
 import Grades from './pages/addGrades'
+import { inject } from '@vercel/analytics'
+inject()
+
 
 function App() {
 
