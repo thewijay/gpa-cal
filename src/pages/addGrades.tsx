@@ -15,13 +15,11 @@ import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
-  DropdownMenuLabel,
-  DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu'
 
 function Grades() {
-  const [gpa, setGPA] = useState('')
+  const [gpa, setGPA] = useState<string | number>('')
   const navigate = useNavigate()
 
   const handleSave = () => {
@@ -37,11 +35,16 @@ function Grades() {
       subjects: subjects.length,
     }
     // Get existing data from localStorage
-    const existingData = JSON.parse(localStorage.getItem('gpaData') || '[]')
+    const existingData: {
+      semester: string
+      gpa: number
+      subjects: number
+    }[] = JSON.parse(localStorage.getItem('gpaData') || '[]')
+    
 
     // Add new entry
     const updatedData = [
-      ...existingData.filter((entry) => entry.semester !== semSelected),
+      ...existingData.filter((entry: any) => entry.semester !== semSelected),
       newEntry,
     ]
 
@@ -72,15 +75,37 @@ function Grades() {
     }
   }, [facultySelected, degreeSelected, semSelected])
 
+  useEffect(() => {
+    const savedSelections = JSON.parse(
+      localStorage.getItem('gpaSelections') || '{}'
+    )
+    if (savedSelections.faculty) setFacultySelected(savedSelections.faculty)
+    if (savedSelections.degree) setDegreeSelected(savedSelections.degree)
+    if (savedSelections.semester) setSemSelected(savedSelections.semester)
+  }, [])
+
+  useEffect(() => {
+    localStorage.setItem(
+      'gpaSelections',
+      JSON.stringify({
+        faculty: facultySelected,
+        degree: degreeSelected,
+        semester: semSelected,
+      })
+    )
+  }, [facultySelected, degreeSelected, semSelected])
+  
+
   const dropdownsSelected =
     facultySelected !== 'Select Your Faculty' &&
     degreeSelected !== 'Select Your Degree Program' &&
     semSelected !== 'Select Your Semester'
 
 
-  useEffect(() => {
-    setGPA(calculateGPA())
-  }, [grades])
+    useEffect(() => {
+      const newGPA = calculateGPA()
+      setGPA(newGPA)
+    }, [grades, subjects])    
 
   const calculateGPA = () => {
     let totalCredits = 0
@@ -129,12 +154,14 @@ function Grades() {
                   <ChevronDown className="h-4 w-4 ml-2 opacity-70" />
                 </Button>
               </DropdownMenuTrigger>
-              <DropdownMenuContent className="w-full bg-popover border-border">
+              <DropdownMenuContent className="w-[18rem] bg-popover border-border">
                 {faculties.map((option) => (
                   <DropdownMenuItem
                     key={option}
                     onSelect={() => {
                       setFacultySelected(option)
+                      setDegreeSelected('Select Your Degree Program')
+                      setSemSelected('Select Your Semester')
                     }}
                     className="hover:bg-accent focus:bg-accent"
                   >
@@ -153,12 +180,13 @@ function Grades() {
                   <ChevronDown className="h-4 w-4 ml-2 opacity-70" />
                 </Button>
               </DropdownMenuTrigger>
-              <DropdownMenuContent className="w-full bg-popover border-border">
+              <DropdownMenuContent className="w-[18rem] bg-popover border-border">
                 {degrees.map((option) => (
                   <DropdownMenuItem
                     key={option}
                     onSelect={() => {
                       setDegreeSelected(option)
+                      setSemSelected('Select Your Semester')
                     }}
                     className="hover:bg-accent focus:bg-accent"
                   >
@@ -177,7 +205,7 @@ function Grades() {
                   <ChevronDown className="h-4 w-4 ml-2 opacity-70" />
                 </Button>
               </DropdownMenuTrigger>
-              <DropdownMenuContent className="w-full bg-popover border-border">
+              <DropdownMenuContent className="w-[18rem] bg-popover border-border">
                 {semesters.map((option) => (
                   <DropdownMenuItem
                     key={option}

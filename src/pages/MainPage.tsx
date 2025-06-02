@@ -3,21 +3,21 @@ import { useTheme } from '../components/theme-provider'
 import { Sun, Moon } from 'lucide-react'
 import { useEffect, useState } from 'react'
 
+type Grade = {
+  gpa: number
+  semester: string
+  subjects: string[]
+}
+
 const MainPage = () => {
   const navigate = useNavigate()
   const { theme, toggleTheme } = useTheme()
-  const [semesters, setSemesters] = useState([])
+  const [semesters, setSemesters] = useState<Grade[]>([])
 
   useEffect(() => {
     const savedData = JSON.parse(localStorage.getItem('gpaData') || '[]')
     setSemesters(savedData)
   }, [])
-
-  // Example dummy data (replace later with actual state/db)
-  //   const semesters = [
-  //     { semester: 'Semester 1', gpa: 3.6, subjects: 5 },
-  //     { semester: 'Semester 2', gpa: 3.8, subjects: 6 },
-  //   ]
 
   const calculateGPA = () => {
     let totalGPA = 0
