@@ -2,14 +2,23 @@
 
 A clean and user-friendly GPA calculator that simplifies the process of tracking academic progress — no backend, no login, just a smooth in-browser experience.
 
-![Screenshot of GPA Calculator](https://postimg.cc/TLjJf5tx)
-![Screenshot of GPA Calculator](https://i.postimg.cc/B6kY5xDj/Screenshot-20250602-180721.png)
-![Screenshot of GPA Calculator](https://i.postimg.cc/wjQrKRKr/Screenshot-20250602-180908.png)
-![Screenshot of GPA Calculator](https://i.postimg.cc/cLSz5MzY/Screenshot-20250602-180939.png)
-![Screenshot of GPA Calculator](https://i.postimg.cc/8PW3HnZN/Screenshot-20250602-181206.png)
-![Screenshot of GPA Calculator](https://i.postimg.cc/qBWS2dX1/Screenshot-20250602-181242.png)
-![Screenshot of GPA Calculator](https://i.postimg.cc/3WMXN1GZ/Screenshot-20250602-181447.png)
-![Screenshot of GPA Calculator](https://i.postimg.cc/VNzFXKVG/Screenshot-20250602-181514.png)
+<div style="display: flex; flex-wrap: wrap; gap: 10px;">
+
+    <img src="https://i.postimg.cc/B6kY5xDj/Screenshot-20250602-180721.png" width="200" />
+
+    <img src="https://i.postimg.cc/wjQrKRKr/Screenshot-20250602-180908.png" width="200" />
+
+    <img src="https://i.postimg.cc/cLSz5MzY/Screenshot-20250602-180939.png" width="200" />
+
+    <img src="https://i.postimg.cc/8PW3HnZN/Screenshot-20250602-181206.png" width="200" />
+
+    <img src="https://i.postimg.cc/qBWS2dX1/Screenshot-20250602-181242.png" width="200" />
+
+    <img src="https://i.postimg.cc/3WMXN1GZ/Screenshot-20250602-181447.png" width="200" />
+
+    <img src="https://i.postimg.cc/VNzFXKVG/Screenshot-20250602-181514.png" width="200" />
+
+</div>
 
 ---
 
