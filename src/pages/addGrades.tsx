@@ -21,7 +21,6 @@ import {
 } from '@/components/ui/dropdown-menu'
 
 function Grades() {
-  const [semester, setSemester] = useState('')
   const [gpa, setGPA] = useState('')
   const navigate = useNavigate()
 
@@ -104,6 +103,7 @@ function Grades() {
   return (
     <div className="min-h-screen bg-background text-foreground transition-colors duration-300">
       <div className="container mx-auto px-4 sm:px-6 py-6">
+
         {/* Header */}
         <div className="flex justify-between items-center mb-8">
 
@@ -301,6 +301,7 @@ function Grades() {
                             </DropdownMenuContent>
                           </DropdownMenu>
                         </div>
+
                       </td>
                     </tr>
                   ))}
@@ -309,11 +310,11 @@ function Grades() {
             </div>
           </div>
         )}
-
+        {/*GPA*/}
         {subjects.length > 0 && (
           <div className="mt-6 text-center">
             {allGradesSelected ? (
-              <p className="text-xl font-semibold text-green-600 dark:text-green-400">
+              <p className="text-lg sm:text-xl font-semibold text-green-600 dark:text-green-400">
                 GPA: {gpa}
               </p>
             ) : (
