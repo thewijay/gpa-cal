@@ -2,8 +2,7 @@
 
 A clean and user-friendly GPA calculator that simplifies the process of tracking academic progress — no backend, no login, just a smooth in-browser experience.
 
-![Screenshot of GPA Calculator]
-(url=https://postimg.cc/TLjJf5tx)
+![Screenshot of GPA Calculator](https://postimg.cc/TLjJf5tx)
 
 (url=https://postimg.cc/G49KG2mP)
 
