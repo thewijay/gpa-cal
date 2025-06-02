@@ -16,7 +16,7 @@ type FacultyMap = {
   [faculty: string]: DegreeMap
 }
 
-export const subjectData = {
+export const subjectData: FacultyMap = {
   Computing: {
     'Computing and Information Systems': {
       'Semester 1': [
