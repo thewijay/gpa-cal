@@ -4,19 +4,33 @@ A clean and user-friendly GPA calculator that simplifies the process of tracking
 
 <div style="display: flex; flex-wrap: wrap; gap: 10px;">
 
+  <a href="" target="_blank">
     <img src="https://i.postimg.cc/B6kY5xDj/Screenshot-20250602-180721.png" width="200" />
+  </a>
 
+  <a href="" target="_blank">
     <img src="https://i.postimg.cc/wjQrKRKr/Screenshot-20250602-180908.png" width="200" />
+  </a>
 
+  <a href="" target="_blank">
     <img src="https://i.postimg.cc/cLSz5MzY/Screenshot-20250602-180939.png" width="200" />
+  </a>
 
+  <a href="" target="_blank">
     <img src="https://i.postimg.cc/8PW3HnZN/Screenshot-20250602-181206.png" width="200" />
+  </a>
 
+  <a href="" target="_blank">
     <img src="https://i.postimg.cc/qBWS2dX1/Screenshot-20250602-181242.png" width="200" />
+  </a>
 
+  <a href="" target="_blank">
     <img src="https://i.postimg.cc/3WMXN1GZ/Screenshot-20250602-181447.png" width="200" />
+  </a>
 
+  <a href="" target="_blank">
     <img src="https://i.postimg.cc/VNzFXKVG/Screenshot-20250602-181514.png" width="200" />
+  </a>
 
 </div>
 
