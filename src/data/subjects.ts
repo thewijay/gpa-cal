@@ -47,7 +47,7 @@ export const subjectData: FacultyMap = {
         { code: 'IS1109', name: 'Statistics & Probability Theory', credits: 2 },
       ],
       'Semester 2': [
-        { code: 'IS2101', name: 'Object Oriented Programming', credits: 3 },
+        { code: 'IS2101', name: 'Object Oriented Programming', credits: 2 },
         {
           code: 'IS2102',
           name: 'Object Oriented Programming Practicum',
