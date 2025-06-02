@@ -127,6 +127,9 @@ const MainPage = () => {
           </div>
         )}
       </div>
+      <footer className="fixed bottom-0 left-0 w-full text-center text-xs text-muted-foreground bg-background py-2 border-t border-border z-50 opacity-40">
+        Developed by Toran
+      </footer>
     </div>
   )
 }
