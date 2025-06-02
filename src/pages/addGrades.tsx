@@ -103,10 +103,8 @@ function Grades() {
   return (
     <div className="min-h-screen bg-background text-foreground transition-colors duration-300">
       <div className="container mx-auto px-4 sm:px-6 py-6">
-
         {/* Header */}
         <div className="flex justify-between items-center mb-8">
-
           <h1 className="text-3xl font-bold text-foreground">GPA Cal</h1>
 
           <button
@@ -119,20 +117,19 @@ function Grades() {
               <Moon className="w-5 h-5 text-blue-600" />
             )}
           </button>
-
         </div>
 
         {/* Dropdowns */}
         <div className="flex flex-col sm:flex-row flex-wrap justify-center items-center sm:items-start gap-4 mb-8">
-          <div id="faculty">
+          <div id="faculty" className="w-[18rem]">
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
-                <Button className="w-full sm:w-72 justify-between bg-muted border-border hover:bg-accent text-muted-foreground">
+                <Button className="w-full justify-between bg-muted border-border hover:bg-accent text-muted-foreground">
                   <span className="truncate">{facultySelected}</span>
                   <ChevronDown className="h-4 w-4 ml-2 opacity-70" />
                 </Button>
               </DropdownMenuTrigger>
-              <DropdownMenuContent className="w-full sm:w-72 min-w-[var(--radix-dropdown-menu-trigger-width)] bg-popover border-border">
+              <DropdownMenuContent className="w-full bg-popover border-border">
                 {faculties.map((option) => (
                   <DropdownMenuItem
                     key={option}
@@ -148,15 +145,15 @@ function Grades() {
             </DropdownMenu>
           </div>
 
-          <div id="degree">
+          <div id="degree" className="w-[18rem]">
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
-                <Button className="w-full sm:w-72 justify-between bg-muted border-border hover:bg-accent text-muted-foreground">
+                <Button className="w-full justify-between bg-muted border-border hover:bg-accent text-muted-foreground">
                   <span className="truncate">{degreeSelected}</span>
                   <ChevronDown className="h-4 w-4 ml-2 opacity-70" />
                 </Button>
               </DropdownMenuTrigger>
-              <DropdownMenuContent className="w-82 bg-popover border-border">
+              <DropdownMenuContent className="w-full bg-popover border-border">
                 {degrees.map((option) => (
                   <DropdownMenuItem
                     key={option}
@@ -172,15 +169,15 @@ function Grades() {
             </DropdownMenu>
           </div>
 
-          <div id="sem">
+          <div id="sem" className="w-[18rem]">
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
-                <Button className="w-full sm:w-72 justify-between bg-muted border-border hover:bg-accent text-muted-foreground">
+                <Button className="w-full justify-between bg-muted border-border hover:bg-accent text-muted-foreground">
                   <span className="truncate">{semSelected}</span>
                   <ChevronDown className="h-4 w-4 ml-2 opacity-70" />
                 </Button>
               </DropdownMenuTrigger>
-              <DropdownMenuContent className="w-72 bg-popover border-border">
+              <DropdownMenuContent className="w-full bg-popover border-border">
                 {semesters.map((option) => (
                   <DropdownMenuItem
                     key={option}
@@ -239,7 +236,6 @@ function Grades() {
                         {sub.credits}
                       </td>
                       <td className="p-4 text-center">
-                        
                         {/* Mobile version: only icon is clickable */}
                         <div className="block md:hidden">
                           <div className="flex items-center justify-between w-[105px] px-3 py-2 rounded-md bg-muted border border-border text-gray-900 dark:text-white">
@@ -301,7 +297,6 @@ function Grades() {
                             </DropdownMenuContent>
                           </DropdownMenu>
                         </div>
-
                       </td>
                     </tr>
                   ))}
