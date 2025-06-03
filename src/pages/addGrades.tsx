@@ -288,7 +288,7 @@ function Grades() {
                                 <DropdownMenu>
                                   <DropdownMenuTrigger asChild>
                                     <button className="ml-2">
-                                      <ChevronDown className="h-4 w-4 opacity-70" />
+                                      <ChevronDown className="h-[21px] w-[21px] opacity-70" />
                                     </button>
                                   </DropdownMenuTrigger>
                                   <DropdownMenuContent className="w-[80px] bg-popover border-border">
