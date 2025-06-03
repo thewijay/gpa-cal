@@ -211,5 +211,31 @@ export const subjectData: FacultyMap = {
         { code: 'SE3108', name: 'Academic English I', credits: 2 },
       ],
     },
+    'Data Science': {
+      'Semester 1': [
+        { code: 'DS1101', name: 'Introduction to Data Science', credits: 1 },
+        { code: 'DS1102', name: 'Programming Fundamentals', credits: 2 },
+        { code: 'DS1103', name: 'Calculus', credits: 2 },
+        { code: 'DS1104', name: 'Introduction to Statistics', credits: 2 },
+        { code: 'DS1105', name: 'Database Management Systems', credits: 2 },
+        { code: 'DS1106', name: 'Computer System Organization', credits: 2 },
+        { code: 'DS1107', name: 'Data and Society', credits: 1 },
+        { code: 'DS1108', name: 'Web Programming I', credits: 2 },
+      ],
+      'Semester 2': [
+        { code: 'DS2101', name: 'Operating Systems', credits: 2 },
+        { code: 'DS2102', name: 'Data Structures ', credits: 2 },
+        { code: 'DS2103', name: 'Linear Algebra', credits: 2 },
+        { code: 'DS2104', name: 'Object Oriented Programing', credits: 2 },
+        {
+          code: 'DS2105',
+          name: 'Capstone Project in Data Science I',
+          credits: 2,
+        },
+        { code: 'DS2106', name: 'Analysis of Algorithms', credits: 2 },
+        { code: 'DS2107', name: 'System Analysis and Design', credits: 2 },
+        { code: 'DS2108', name: 'Data Pre-Processing', credits: 1 },
+      ],
+    },
   },
 }
