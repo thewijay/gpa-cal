@@ -2,6 +2,8 @@ import { useNavigate } from 'react-router-dom'
 import { useTheme } from '../components/theme-provider'
 import { Sun, Moon } from 'lucide-react'
 import { useEffect, useState } from 'react'
+import CountUp from 'react-countup'
+import { motion } from 'framer-motion'
 
 type Grade = {
   gpa: number
@@ -31,7 +33,7 @@ const MainPage = () => {
       }
     })
 
-    return semCount === 0 ? 0 : (totalGPA / semCount).toFixed(3)
+    return semCount === 0 ? 0 : parseFloat((totalGPA / semCount).toFixed(3))
   }
 
   const handleClearData = () => {
@@ -115,16 +117,21 @@ const MainPage = () => {
 
         {/* GPA Box */}
         {semesters.length > 0 && (
-          <div className="mt-8 p-4 sm:p-4 bg-card border border-border rounded-lg shadow-sm w-full max-w-[220px] mx-auto">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            className="mt-8 p-4 sm:p-4 bg-card border border-border rounded-lg shadow-sm w-full max-w-[220px] mx-auto"
+          >
             <div className="text-center">
               <h3 className="text-sm sm:text-base font-medium text-muted-foreground mb-2">
                 Your GPA
               </h3>
               <div className="text-2xl sm:text-3xl font-bold text-primary">
-                {calculateGPA()}
+                <CountUp end={calculateGPA()} decimals={3} duration={1.5} />
               </div>
             </div>
-          </div>
+          </motion.div>
         )}
       </div>
       <footer className="fixed bottom-0 left-0 w-full text-center text-xs text-muted-foreground bg-background py-2 border-t border-border z-50 opacity-40">

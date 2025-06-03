@@ -11,6 +11,7 @@ import { semesters } from '../data/semesters'
 import { useTheme } from '../components/theme-provider'
 import { Sun, Moon } from 'lucide-react'
 import { useNavigate } from 'react-router-dom'
+import CountUp from 'react-countup'
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -19,7 +20,7 @@ import {
 } from '@/components/ui/dropdown-menu'
 
 function Grades() {
-  const [gpa, setGPA] = useState<string | number>('')
+  const [gpa, setGPA] = useState<number | number>(0)
   const navigate = useNavigate()
 
   const handleSave = () => {
@@ -30,7 +31,7 @@ function Grades() {
 
     const newEntry = {
       semester: semSelected,
-      gpa: parseFloat(String(gpa)),
+      gpa: parseFloat(gpa),
       subjects: subjects.length,
     }
     // Get existing data from localStorage
@@ -119,7 +120,7 @@ function Grades() {
       }
     })
 
-    return totalCredits === 0 ? 0 : (totalPoints / totalCredits).toFixed(3)
+    return totalCredits === 0 ? 0 : Number((totalPoints / totalCredits).toFixed(3))
   }
   const allGradesSelected = subjects.every((sub) => grades[sub.code])
 
@@ -338,7 +339,7 @@ function Grades() {
               <div className="mt-6 text-center">
                 {allGradesSelected ? (
                   <p className="text-lg sm:text-xl font-semibold text-green-600 dark:text-green-400">
-                    GPA: {gpa}
+                    GPA: <CountUp end={gpa} decimals={3} duration={1.5} />
                   </p>
                 ) : (
                   <p className="text-lg text-muted-foreground">
