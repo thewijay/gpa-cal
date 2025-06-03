@@ -12,6 +12,7 @@ import { useTheme } from '../components/theme-provider'
 import { Sun, Moon } from 'lucide-react'
 import { useNavigate } from 'react-router-dom'
 import CountUp from 'react-countup'
+import { motion } from 'framer-motion'
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -124,8 +125,21 @@ function Grades() {
   }
   const allGradesSelected = subjects.every((sub) => grades[sub.code])
 
+  const pageVariants = {
+    initial: { opacity: 0, y: 20 },
+    animate: { opacity: 1, y: 0 },
+    exit: { opacity: 0, y: -20 },
+  }
+
   return (
-    <div className="min-h-screen flex flex-col bg-background text-foreground p-0 mt-0">
+    <motion.div
+      className="min-h-screen flex flex-col bg-background text-foreground p-0 mt-0"
+      variants={pageVariants}
+      initial="initial"
+      animate="animate"
+      exit="exit"
+      transition={{ duration: 0.4 }}
+    >
       <main className="flex-grow">
         <div className="min-h-screen bg-background text-foreground transition-colors duration-300">
           <div className="container mx-auto px-4 sm:px-6 py-6">
@@ -364,7 +378,7 @@ function Grades() {
       <footer className="w-full text-center text-xs text-muted-foreground bg-background py-2 border-t border-border z-50 opacity-40">
         Developed by Toran
       </footer>
-    </div>
+    </motion.div>
   )
 }
 
