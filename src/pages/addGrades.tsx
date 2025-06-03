@@ -32,7 +32,7 @@ function Grades() {
 
     const newEntry = {
       semester: semSelected,
-      gpa: parseFloat(gpa),
+      gpa,
       subjects: subjects.length,
     }
     // Get existing data from localStorage
