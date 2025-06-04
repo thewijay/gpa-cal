@@ -62,12 +62,33 @@ function Grades() {
     // Save updated data to localStorage
     localStorage.setItem('gpaData', JSON.stringify(updatedData))
 
+    localStorage.setItem('lockedFaculty', facultySelected)
+    localStorage.setItem('lockedDegree', degreeSelected)
+
     localStorage.setItem('showToast', 'your Grades successfully saved!')
 
     // Navigate back to main page
       navigate('/')
 
   }
+
+  useEffect(() => {
+    const savedSelections = JSON.parse(
+      localStorage.getItem('gpaSelections') || '{}'
+    )
+
+    const lockedFaculty = localStorage.getItem('lockedFaculty')
+    const lockedDegree = localStorage.getItem('lockedDegree')
+
+    if (lockedFaculty) setFacultySelected(lockedFaculty)
+    else if (savedSelections.faculty)
+      setFacultySelected(savedSelections.faculty)
+
+    if (lockedDegree) setDegreeSelected(lockedDegree)
+    else if (savedSelections.degree) setDegreeSelected(savedSelections.degree)
+
+    if (savedSelections.semester) setSemSelected(savedSelections.semester)
+  }, [])  
 
   const savedSemesters = JSON.parse(
     localStorage.getItem('gpaData') || '[]'
@@ -170,8 +191,7 @@ function Grades() {
 
 
   return (
-    <div
-      className="min-h-screen flex flex-col bg-background text-foreground p-0 mt-0">
+    <div className="min-h-screen flex flex-col bg-background text-foreground p-0 mt-0">
       <main className="flex-grow">
         <div className="min-h-screen bg-background text-foreground transition-colors duration-300">
           <div className="container mx-auto px-4 sm:px-6 py-6">
@@ -196,7 +216,10 @@ function Grades() {
               <div id="faculty" className="w-[18rem]">
                 <DropdownMenu>
                   <DropdownMenuTrigger asChild>
-                    <Button className="w-full justify-between bg-muted border-border hover:bg-accent text-muted-foreground">
+                    <Button
+                      className="w-full justify-between bg-muted border-border hover:bg-accent text-muted-foreground"
+                      disabled={Boolean(localStorage.getItem('lockedFaculty'))}
+                    >
                       <span className="truncate">{facultySelected}</span>
                       <ChevronDown className="h-4 w-4 ml-2 opacity-70" />
                     </Button>
@@ -224,7 +247,11 @@ function Grades() {
                   <DropdownMenuTrigger asChild>
                     <Button
                       className="w-full justify-between bg-muted border-border hover:bg-accent text-muted-foreground"
-                      disabled={facultySelected === 'Select Your Faculty'}
+                      disabled={
+                        facultySelected === DEFAULT_FACULTY ||
+                        Boolean(localStorage.getItem('lockedDegree')) ||
+                        (facultySelected === 'Select Your Faculty')
+                      }
                     >
                       <span className="truncate">{degreeSelected}</span>
                       <ChevronDown className="h-4 w-4 ml-2 opacity-70" />
