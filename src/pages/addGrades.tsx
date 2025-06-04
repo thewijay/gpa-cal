@@ -4,10 +4,7 @@ import { ChevronDown } from 'lucide-react'
 import { useEffect } from 'react'
 import { subjectData } from '../data/subjects'
 import { gradeOptions } from '../data/grades'
-import { faculties } from '../data/faculties'
-import { degrees } from '../data/degrees'
 import { gradePoints } from '../data/gradePoints'
-import { semesters } from '../data/semesters'
 import { useTheme } from '../components/theme-provider'
 import { Sun, Moon } from 'lucide-react'
 import { useNavigate } from 'react-router-dom'
@@ -20,12 +17,25 @@ import {
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu'
 
+const DEFAULT_FACULTY = 'Select Your Faculty'
+const DEFAULT_DEGREE = 'Select Your Degree Program'
+const DEFAULT_SEMESTER = 'Select Your Semester'
+
 function Grades() {
   const [gpa, setGPA] = useState<number | number>(0)
   const navigate = useNavigate()
+  const facultyOptions = Object.keys(subjectData)
+  const [facultySelected, setFacultySelected] = useState(DEFAULT_FACULTY)
+  const [degreeSelected, setDegreeSelected] = useState(DEFAULT_DEGREE)
+  const [semSelected, setSemSelected] = useState(DEFAULT_SEMESTER)
+  const [subjects, setSubjects] = useState<
+    { code: string; name: string; credits: number }[]
+  >([])
+  const [grades, setGrades] = useState<Record<string, string>>({})
+  const { theme, toggleTheme } = useTheme()
 
   const handleSave = () => {
-    if (semSelected === 'Select Your Semester') {
+    if (semSelected === DEFAULT_SEMESTER) {
       alert('Please select a semester.')
       return
     }
@@ -51,20 +61,27 @@ function Grades() {
     // Save updated data to localStorage
     localStorage.setItem('gpaData', JSON.stringify(updatedData))
 
+    localStorage.setItem('showToast', 'your Grades successfully saved!')
+
     // Navigate back to main page
-    navigate('/')
+      navigate('/')
+
   }
 
-  const [facultySelected, setFacultySelected] = useState('Select Your Faculty')
-  const [degreeSelected, setDegreeSelected] = useState(
-    'Select Your Degree Program'
-  )
-  const [semSelected, setSemSelected] = useState('Select Your Semester')
-  const [subjects, setSubjects] = useState<
-    { code: string; name: string; credits: number }[]
-  >([])
-  const [grades, setGrades] = useState<Record<string, string>>({})
-  const { theme, toggleTheme } = useTheme()
+  const degreeOptions =
+    facultySelected !== DEFAULT_FACULTY
+      ? Object.keys(subjectData[facultySelected] || {})
+      : []
+
+  const semesterOptions =
+    facultySelected !== DEFAULT_FACULTY && degreeSelected !== DEFAULT_DEGREE
+      ? Object.keys(
+          (subjectData[facultySelected]?.[degreeSelected] as Record<
+            string,
+            any
+          >) || {}
+        )
+      : []
 
   useEffect(() => {
     if (facultySelected && degreeSelected && semSelected) {
@@ -87,14 +104,21 @@ function Grades() {
   }, [])
 
   useEffect(() => {
-    localStorage.setItem(
-      'gpaSelections',
-      JSON.stringify({
-        faculty: facultySelected,
-        degree: degreeSelected,
-        semester: semSelected,
-      })
-    )
+    if (
+      facultySelected !== DEFAULT_FACULTY &&
+      degreeSelected !== DEFAULT_DEGREE &&
+      semSelected !== DEFAULT_SEMESTER
+    ) {
+      const subs =
+        (subjectData as any)?.[facultySelected]?.[degreeSelected]?.[
+          semSelected
+        ] || []
+      setSubjects(subs)
+      setGrades({})
+    } else {
+      setSubjects([])
+      setGrades({})
+    }
   }, [facultySelected, degreeSelected, semSelected])
 
   const dropdownsSelected =
@@ -121,7 +145,9 @@ function Grades() {
       }
     })
 
-    return totalCredits === 0 ? 0 : Number((totalPoints / totalCredits).toFixed(3))
+    return totalCredits === 0
+      ? 0
+      : Number((totalPoints / totalCredits).toFixed(3))
   }
   const allGradesSelected = subjects.every((sub) => grades[sub.code])
 
@@ -170,7 +196,7 @@ function Grades() {
                     </Button>
                   </DropdownMenuTrigger>
                   <DropdownMenuContent className="w-[18rem] bg-popover border-border">
-                    {faculties.map((option) => (
+                    {facultyOptions.map((option) => (
                       <DropdownMenuItem
                         key={option}
                         onSelect={() => {
@@ -190,13 +216,16 @@ function Grades() {
               <div id="degree" className="w-[18rem]">
                 <DropdownMenu>
                   <DropdownMenuTrigger asChild>
-                    <Button className="w-full justify-between bg-muted border-border hover:bg-accent text-muted-foreground">
+                    <Button
+                      className="w-full justify-between bg-muted border-border hover:bg-accent text-muted-foreground"
+                      disabled={facultySelected === 'Select Your Faculty'}
+                    >
                       <span className="truncate">{degreeSelected}</span>
                       <ChevronDown className="h-4 w-4 ml-2 opacity-70" />
                     </Button>
                   </DropdownMenuTrigger>
                   <DropdownMenuContent className="w-[18rem] bg-popover border-border">
-                    {degrees.map((option) => (
+                    {degreeOptions.map((option) => (
                       <DropdownMenuItem
                         key={option}
                         onSelect={() => {
@@ -215,13 +244,16 @@ function Grades() {
               <div id="sem" className="w-[18rem]">
                 <DropdownMenu>
                   <DropdownMenuTrigger asChild>
-                    <Button className="w-full justify-between bg-muted border-border hover:bg-accent text-muted-foreground">
+                    <Button
+                      className="w-full justify-between bg-muted border-border hover:bg-accent text-muted-foreground"
+                      disabled={degreeSelected === 'Select Your Degree Program'}
+                    >
                       <span className="truncate">{semSelected}</span>
                       <ChevronDown className="h-4 w-4 ml-2 opacity-70" />
                     </Button>
                   </DropdownMenuTrigger>
                   <DropdownMenuContent className="w-[18rem] bg-popover border-border">
-                    {semesters.map((option) => (
+                    {semesterOptions.map((option) => (
                       <DropdownMenuItem
                         key={option}
                         onSelect={() => {
@@ -365,7 +397,10 @@ function Grades() {
 
             <div className="mt-6">
               <button
-                disabled={!allGradesSelected || !dropdownsSelected}
+                disabled={
+                  !dropdownsSelected ||
+                  (subjects.length > 0 && !allGradesSelected)
+                }
                 className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition disabled:opacity-50 disabled:cursor-not-allowed"
                 onClick={handleSave}
               >

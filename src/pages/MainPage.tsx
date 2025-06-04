@@ -4,6 +4,7 @@ import { Sun, Moon } from 'lucide-react'
 import { useEffect, useState } from 'react'
 import CountUp from 'react-countup'
 import { motion } from 'framer-motion'
+import toast from 'react-hot-toast'
 
 type Grade = {
   gpa: number
@@ -15,6 +16,14 @@ const MainPage = () => {
   const navigate = useNavigate()
   const { theme, toggleTheme } = useTheme()
   const [semesters, setSemesters] = useState<Grade[]>([])
+
+  useEffect(() => {
+    const toastMessage = localStorage.getItem('showToast')
+    if (toastMessage) {
+      toast.success(toastMessage)
+      localStorage.removeItem('showToast')
+    }
+  }, [])
 
   useEffect(() => {
     const savedData = JSON.parse(localStorage.getItem('gpaData') || '[]')

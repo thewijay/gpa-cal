@@ -188,7 +188,7 @@ export const subjectData: FacultyMap = {
         },
         { code: 'SE3102', name: 'Formal Methods', credits: 2 },
         {
-          code: 'SE103',
+          code: 'SE3103',
           name: 'Object Oriented Analysis and Design',
           credits: 2,
         },
@@ -239,3 +239,6 @@ export const subjectData: FacultyMap = {
     },
   },
 }
+
+export type { Subject, SemesterMap, DegreeMap, FacultyMap }
+

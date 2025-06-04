@@ -8,6 +8,7 @@ import './App.css'
 import { AnimatePresence } from 'framer-motion'
 import MainPage from './pages/MainPage'
 import Grades from './pages/addGrades'
+import { Toaster } from 'react-hot-toast'
 import { inject } from '@vercel/analytics'
 inject()
 
@@ -16,6 +17,7 @@ function AnimatedRoutes() {
 
   return (
     <AnimatePresence mode="wait">
+      <Toaster position="top-right" />
       <Routes location={location} key={location.pathname}>
         <Route path="/" element={<MainPage />} />
         <Route path="/addGrades" element={<Grades />} />
