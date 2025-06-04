@@ -39,10 +39,12 @@ function Grades() {
       return
     }
 
+    const totalCredits = subjects.reduce((sum, sub) => sum + sub.credits, 0)
+
     const newEntry = {
       semester: semSelected,
       gpa,
-      subjects: subjects.length,
+      credits: totalCredits,
     }
     // Get existing data from localStorage
     const existingData: {

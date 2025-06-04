@@ -9,7 +9,7 @@ import toast from 'react-hot-toast'
 type Grade = {
   gpa: number
   semester: string
-  subjects: string[]
+  credits: number
 }
 
 const MainPage = () => {
@@ -88,7 +88,7 @@ const MainPage = () => {
                       GPA
                     </th>
                     <th className="font-semibold p-3 min-w-[100px] sm:min-w-[150px] text-center border">
-                      Subjects
+                      Credits
                     </th>
                   </tr>
                 </thead>
@@ -102,7 +102,7 @@ const MainPage = () => {
                         {s.gpa}
                       </td>
                       <td className="p-4 font-mono text-sm sm:text-base text-center border">
-                        {s.subjects}
+                        {s.credits}
                       </td>
                     </tr>
                   ))}
