@@ -2,7 +2,7 @@
 
 import { useNavigate } from 'react-router-dom'
 import { useTheme } from '../components/theme-provider'
-import { Sun, Moon } from 'lucide-react'
+import { Sun, Moon, Trash2 } from 'lucide-react'
 import { useEffect, useState } from 'react'
 import CountUp from 'react-countup'
 import { motion } from 'framer-motion'
@@ -57,6 +57,19 @@ const MainPage = () => {
     }
   }
 
+  const handleDeleteSemester = (semesterToDelete: string) => {
+    if (
+      window.confirm(`Are you sure you want to delete ${semesterToDelete}?`)
+    ) {
+      const updatedSemesters = semesters.filter(
+        (sem) => sem.semester !== semesterToDelete
+      )
+      localStorage.setItem('gpaData', JSON.stringify(updatedSemesters))
+      setSemesters(updatedSemesters)
+      toast.success(`${semesterToDelete} has been deleted`)
+    }
+  }
+
   return (
     <div className="min-h-screen flex flex-col bg-background text-foreground p-0 mt-0">
       <main className="flex-grow">
@@ -86,28 +99,40 @@ const MainPage = () => {
               <table className="min-w-full text-left bg-card text-sm sm:text-base">
                 <thead>
                   <tr className="bg-muted border-b border-border">
-                    <th className="font-semibold p-3 min-w-[120px] sm:min-w-[200px] border">
+                    <th className="font-semibold p-2 sm:p-3 min-w-[100px] sm:min-w-[200px] border">
                       Semester
                     </th>
-                    <th className="font-semibold p-3 min-w-[100px] sm:min-w-[150px] text-center border">
+                    <th className="font-semibold p-2 sm:p-3 min-w-[80px] sm:min-w-[150px] text-center border">
                       GPA
                     </th>
-                    <th className="font-semibold p-3 min-w-[100px] sm:min-w-[150px] text-center border">
+                    <th className="font-semibold p-2 sm:p-3 min-w-[60px] sm:min-w-[150px] text-center border">
                       Credits
+                    </th>
+                    <th className="font-semibold p-2 sm:p-3 w-[50px] sm:w-[80px] text-center border">
+                      Action
                     </th>
                   </tr>
                 </thead>
                 <tbody>
                   {semesters.map((s, index) => (
                     <tr key={index}>
-                      <td className="p-4 font-mono text-sm sm:text-base text-center sm:text-left border">
+                      <td className="p-2 sm:p-4 font-mono text-sm sm:text-base text-left border truncate">
                         {s.semester}
                       </td>
-                      <td className="p-4 font-mono text-sm sm:text-base text-center border">
+                      <td className="p-2 sm:p-4 font-mono text-sm sm:text-base text-center border">
                         {s.gpa}
                       </td>
-                      <td className="p-4 font-mono text-sm sm:text-base text-center border">
+                      <td className="p-2 sm:p-4 font-mono text-sm sm:text-base text-center border">
                         {s.credits}
+                      </td>
+                      <td className="p-1 sm:p-4 text-center border">
+                        <button
+                          onClick={() => handleDeleteSemester(s.semester)}
+                          className="p-1 sm:p-2 text-red-500 hover:text-red-700 dark:text-red-400 dark:hover:text-red-300 transition-colors"
+                          title="Delete semester"
+                        >
+                          <Trash2 className="w-4 h-4 sm:w-6 sm:h-6" />
+                        </button>
                       </td>
                     </tr>
                   ))}
