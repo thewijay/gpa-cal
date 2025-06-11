@@ -131,7 +131,7 @@ const MainPage = () => {
                           className="p-1 sm:p-2 text-red-500 hover:text-red-700 dark:text-red-400 dark:hover:text-red-300 transition-colors"
                           title="Delete semester"
                         >
-                          <Trash2 className="w-4 h-4 sm:w-6 sm:h-6" />
+                          <Trash2 className="w-4 h-4 sm:w-[21px] sm:h-[21px]" />
                         </button>
                       </td>
                     </tr>
