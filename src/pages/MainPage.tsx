@@ -50,6 +50,9 @@ const MainPage = () => {
   const handleClearData = () => {
     if (window.confirm('Are you sure you want to clear all GPA data?')) {
       localStorage.removeItem('gpaData')
+      localStorage.removeItem('lockedFaculty')
+      localStorage.removeItem('lockedDegree')
+      localStorage.removeItem('gpaSelections')
       setSemesters([])
     }
   }
