@@ -26,8 +26,16 @@ const MainPage = () => {
   }, [])
 
   useEffect(() => {
-    const savedData = JSON.parse(localStorage.getItem('gpaData') || '[]')
-    setSemesters(savedData)
+    const savedData = JSON.parse(
+      localStorage.getItem('gpaData') || '[]'
+    ) as Grade[]
+    // Sort semesters by extracting and comparing semester numbers
+    const sortedData = [...savedData].sort((a, b) => {
+      const semesterA = parseInt(a.semester.split(' ')[1])
+      const semesterB = parseInt(b.semester.split(' ')[1])
+      return semesterA - semesterB
+    })
+    setSemesters(sortedData)
   }, [])
 
   const calculateGPA = () => {
@@ -59,9 +67,13 @@ const MainPage = () => {
     if (
       window.confirm(`Are you sure you want to delete ${semesterToDelete}?`)
     ) {
-      const updatedSemesters = semesters.filter(
-        (sem) => sem.semester !== semesterToDelete
-      )
+      const updatedSemesters = semesters
+        .filter((sem) => sem.semester !== semesterToDelete)
+        .sort((a, b) => {
+          const semesterA = parseInt(a.semester.split(' ')[1])
+          const semesterB = parseInt(b.semester.split(' ')[1])
+          return semesterA - semesterB
+        })
       localStorage.setItem('gpaData', JSON.stringify(updatedSemesters))
       setSemesters(updatedSemesters)
       toast.success(`${semesterToDelete} has been deleted`)
