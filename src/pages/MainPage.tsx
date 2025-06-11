@@ -3,7 +3,7 @@ import { useTheme } from '../components/theme-provider'
 import { Sun, Moon, Trash2 } from 'lucide-react'
 import { useEffect, useState } from 'react'
 import CountUp from 'react-countup'
-import { motion } from 'framer-motion'
+import { motion, AnimatePresence } from 'framer-motion'
 import toast from 'react-hot-toast'
 
 type Grade = {
@@ -80,6 +80,49 @@ const MainPage = () => {
     }
   }
 
+  const rowVariants = {
+    initial: {
+      opacity: 0,
+      y: 20,
+      scale: 0.95,
+    },
+    animate: {
+      opacity: 1,
+      y: 0,
+      scale: 1,
+      transition: {
+        type: 'spring',
+        stiffness: 50,
+        damping: 15,
+        mass: 1,
+        duration: 0.6,
+        opacity: {
+          duration: 0.6,
+          ease: 'easeInOut',
+        },
+        y: {
+          type: 'spring',
+          stiffness: 70,
+          damping: 12,
+          duration: 0.6,
+        },
+        scale: {
+          duration: 0.6,
+          ease: 'easeOut',
+        },
+      },
+    },
+    exit: {
+      opacity: 0,
+      scale: 0.95,
+      y: -20,
+      transition: {
+        duration: 0.6,
+        ease: 'easeInOut',
+      },
+    },
+  }
+
   return (
     <div className="min-h-screen flex flex-col bg-background text-foreground p-0 mt-0">
       <main className="flex-grow">
@@ -124,28 +167,37 @@ const MainPage = () => {
                   </tr>
                 </thead>
                 <tbody>
-                  {semesters.map((s, index) => (
-                    <tr key={index}>
-                      <td className="p-2 sm:p-4 font-mono text-sm sm:text-base text-left border truncate">
-                        {s.semester}
-                      </td>
-                      <td className="p-2 sm:p-4 font-mono text-sm sm:text-base text-center border">
-                        {s.gpa}
-                      </td>
-                      <td className="p-2 sm:p-4 font-mono text-sm sm:text-base text-center border">
-                        {s.credits}
-                      </td>
-                      <td className="p-1 sm:p-4 text-center border">
-                        <button
-                          onClick={() => handleDeleteSemester(s.semester)}
-                          className="p-1 sm:p-2 text-red-500 hover:text-red-700 dark:text-red-400 dark:hover:text-red-300 transition-colors"
-                          title="Delete semester"
-                        >
-                          <Trash2 className="w-4 h-4 sm:w-[21px] sm:h-[21px]" />
-                        </button>
-                      </td>
-                    </tr>
-                  ))}
+                  <AnimatePresence mode="popLayout">
+                    {semesters.map((s) => (
+                      <motion.tr
+                        key={s.semester}
+                        variants={rowVariants}
+                        initial="initial"
+                        animate="animate"
+                        exit="exit"
+                        layout
+                      >
+                        <td className="p-2 sm:p-4 font-mono text-sm sm:text-base text-left border truncate">
+                          {s.semester}
+                        </td>
+                        <td className="p-2 sm:p-4 font-mono text-sm sm:text-base text-center border">
+                          {s.gpa}
+                        </td>
+                        <td className="p-2 sm:p-4 font-mono text-sm sm:text-base text-center border">
+                          {s.credits}
+                        </td>
+                        <td className="p-1 sm:p-4 text-center border">
+                          <button
+                            onClick={() => handleDeleteSemester(s.semester)}
+                            className="p-1 sm:p-2 text-red-500 hover:text-red-700 dark:text-red-400 dark:hover:text-red-300 transition-colors"
+                            title="Delete semester"
+                          >
+                            <Trash2 className="w-4 h-4 sm:w-[21px] sm:h-[21px]" />
+                          </button>
+                        </td>
+                      </motion.tr>
+                    ))}
+                  </AnimatePresence>
                 </tbody>
               </table>
             </div>
