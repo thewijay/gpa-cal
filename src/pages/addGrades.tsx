@@ -1,7 +1,11 @@
 import { Button } from '../components/ui/button'
 import { ChevronDown } from 'lucide-react'
-import { useEffect } from 'react'
-import { subjectData, type SemesterSubjects } from '../data/subjects'
+import { useEffect, useState } from 'react'
+import {
+  subjectData,
+  type Subject,
+  type SemesterSubjects,
+} from '../data/subjects'
 import { gradeOptions } from '../data/grades'
 import { gradePoints } from '../data/gradePoints'
 import { useTheme } from '../components/theme-provider'
@@ -22,12 +26,6 @@ const DEFAULT_SEMESTER = 'Select Your Semester'
 type GPAEntry = {
   semester: string
   gpa: number
-  credits: number
-}
-
-type Subject = {
-  code: string
-  name: string
   credits: number
 }
 
@@ -53,8 +51,8 @@ function Grades() {
 
     const totalCredits = [
       ...subjects,
-      ...electives.filter((elective) => grades[elective.code]),
-    ].reduce((sum, sub) => sum + sub.credits, 0)
+      ...electives.filter((elective: Subject) => grades[elective.code]),
+    ].reduce((sum: number, sub: Subject) => sum + sub.credits, 0)
 
     const newEntry = {
       semester: semSelected,
@@ -140,8 +138,8 @@ function Grades() {
 
   useEffect(() => {
     const newSelectedElectiveCredits = electives
-      .filter((elective) => grades[elective.code])
-      .reduce((sum, elective) => sum + elective.credits, 0)
+      .filter((elective: Subject) => grades[elective.code])
+      .reduce((sum: number, elective: Subject) => sum + elective.credits, 0)
     setSelectedElectiveCredits(newSelectedElectiveCredits)
   }, [grades, electives])
 
@@ -156,7 +154,7 @@ function Grades() {
 
     const allSubjects = [
       ...subjects,
-      ...electives.filter((elective) => grades[elective.code]),
+      ...electives.filter((elective: Subject) => grades[elective.code]),
     ]
 
     allSubjects.forEach((sub) => {
@@ -174,7 +172,9 @@ function Grades() {
       : Number((totalPoints / totalCredits).toFixed(3))
   }
 
-  const allCoreGradesSelected = subjects.every((sub) => grades[sub.code])
+  const allCoreGradesSelected = subjects.every(
+    (sub: Subject) => grades[sub.code]
+  )
   const isElectiveCreditValid =
     selectedElectiveCredits === electiveCreditsRequired
   const hasExcessElectiveCredits =
@@ -324,7 +324,7 @@ function Grades() {
                       </tr>
                     </thead>
                     <tbody>
-                      {subjects.map((sub, index) => (
+                      {subjects.map((sub: Subject, index: number) => (
                         <tr
                           key={sub.code}
                           className={`border-b border-border hover:bg-accent/50 transition-colors ${
@@ -345,7 +345,7 @@ function Grades() {
                             <GradeDropdown
                               selectedGrade={grades[sub.code]}
                               onSelect={(grade) =>
-                                setGrades((prev) => ({
+                                setGrades((prev: Record<string, string>) => ({
                                   ...prev,
                                   [sub.code]: grade,
                                 }))
@@ -406,7 +406,7 @@ function Grades() {
                       </tr>
                     </thead>
                     <tbody>
-                      {electives.map((sub, index) => (
+                      {electives.map((sub: Subject, index: number) => (
                         <tr
                           key={sub.code}
                           className={`border-b border-border hover:bg-accent/50 transition-colors ${
@@ -427,7 +427,7 @@ function Grades() {
                             <GradeDropdown
                               selectedGrade={grades[sub.code]}
                               onSelect={(grade) =>
-                                setGrades((prev) => ({
+                                setGrades((prev: Record<string, string>) => ({
                                   ...prev,
                                   [sub.code]: grade,
                                 }))
