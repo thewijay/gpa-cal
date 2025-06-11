@@ -1,5 +1,3 @@
-// subjects.ts
-
 type Subject = {
   code: string
   name: string

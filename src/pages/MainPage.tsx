@@ -1,5 +1,3 @@
-// MainPage.tsx
-
 import { useNavigate } from 'react-router-dom'
 import { useTheme } from '../components/theme-provider'
 import { Sun, Moon, Trash2 } from 'lucide-react'

@@ -1,6 +1,3 @@
-// addGrades.tsx
-
-import { useState } from 'react'
 import { Button } from '../components/ui/button'
 import { ChevronDown } from 'lucide-react'
 import { useEffect } from 'react'
