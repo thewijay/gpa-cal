@@ -1,8 +1,10 @@
+// addGrades.tsx
+
 import { useState } from 'react'
 import { Button } from '../components/ui/button'
 import { ChevronDown } from 'lucide-react'
 import { useEffect } from 'react'
-import { subjectData } from '../data/subjects'
+import { subjectData, type SemesterSubjects } from '../data/subjects'
 import { gradeOptions } from '../data/grades'
 import { gradePoints } from '../data/gradePoints'
 import { useTheme } from '../components/theme-provider'
@@ -20,17 +22,30 @@ const DEFAULT_FACULTY = 'Select Your Faculty'
 const DEFAULT_DEGREE = 'Select Your Degree Program'
 const DEFAULT_SEMESTER = 'Select Your Semester'
 
+type GPAEntry = {
+  semester: string
+  gpa: number
+  credits: number
+}
+
+type Subject = {
+  code: string
+  name: string
+  credits: number
+}
+
 function Grades() {
-  const [gpa, setGPA] = useState<number | number>(0)
+  const [gpa, setGPA] = useState<number>(0)
   const navigate = useNavigate()
   const facultyOptions = Object.keys(subjectData)
   const [facultySelected, setFacultySelected] = useState(DEFAULT_FACULTY)
   const [degreeSelected, setDegreeSelected] = useState(DEFAULT_DEGREE)
   const [semSelected, setSemSelected] = useState(DEFAULT_SEMESTER)
-  const [subjects, setSubjects] = useState<
-    { code: string; name: string; credits: number }[]
-  >([])
+  const [subjects, setSubjects] = useState<Subject[]>([])
+  const [electives, setElectives] = useState<Subject[]>([])
   const [grades, setGrades] = useState<Record<string, string>>({})
+  const [electiveCreditsRequired, setElectiveCreditsRequired] = useState(0)
+  const [selectedElectiveCredits, setSelectedElectiveCredits] = useState(0)
   const { theme, toggleTheme } = useTheme()
 
   const handleSave = () => {
@@ -39,44 +54,36 @@ function Grades() {
       return
     }
 
-    const totalCredits = subjects.reduce((sum, sub) => sum + sub.credits, 0)
+    const totalCredits = [
+      ...subjects,
+      ...electives.filter((elective) => grades[elective.code]),
+    ].reduce((sum, sub) => sum + sub.credits, 0)
 
     const newEntry = {
       semester: semSelected,
       gpa,
       credits: totalCredits,
     }
-    // Get existing data from localStorage
-    const existingData: {
-      semester: string
-      gpa: number
-      subjects: number
-    }[] = JSON.parse(localStorage.getItem('gpaData') || '[]')
 
-    // Add new entry
+    const existingData = JSON.parse(
+      localStorage.getItem('gpaData') || '[]'
+    ) as GPAEntry[]
     const updatedData = [
-      ...existingData.filter((entry: any) => entry.semester !== semSelected),
+      ...existingData.filter((entry) => entry.semester !== semSelected),
       newEntry,
     ]
 
-    // Save updated data to localStorage
     localStorage.setItem('gpaData', JSON.stringify(updatedData))
-
     localStorage.setItem('lockedFaculty', facultySelected)
     localStorage.setItem('lockedDegree', degreeSelected)
-
     localStorage.setItem('showToast', 'your Grades successfully saved!')
-
-    // Navigate back to main page
-      navigate('/')
-
+    navigate('/')
   }
 
   useEffect(() => {
     const savedSelections = JSON.parse(
       localStorage.getItem('gpaSelections') || '{}'
     )
-
     const lockedFaculty = localStorage.getItem('lockedFaculty')
     const lockedDegree = localStorage.getItem('lockedDegree')
 
@@ -88,7 +95,7 @@ function Grades() {
     else if (savedSelections.degree) setDegreeSelected(savedSelections.degree)
 
     if (savedSelections.semester) setSemSelected(savedSelections.semester)
-  }, [])  
+  }, [])
 
   const savedSemesters = JSON.parse(
     localStorage.getItem('gpaData') || '[]'
@@ -116,53 +123,30 @@ function Grades() {
       ? Object.keys(
           (subjectData[facultySelected]?.[degreeSelected] as Record<
             string,
-            any
+            SemesterSubjects
           >) || {}
         ).filter((sem) => !usedSemesters.includes(sem))
       : []
 
   useEffect(() => {
     if (facultySelected && degreeSelected && semSelected) {
-      const subs =
-        (subjectData as any)?.[facultySelected]?.[degreeSelected]?.[
-          semSelected
-        ] || []
-      setSubjects(subs)
-      setGrades({})
+      const semesterData =
+        subjectData[facultySelected]?.[degreeSelected]?.[semSelected]
+      if (semesterData) {
+        setSubjects(semesterData.core || [])
+        setElectives(semesterData.electives || [])
+        setElectiveCreditsRequired(semesterData.electiveCreditsRequired || 0)
+        setGrades({})
+      }
     }
   }, [facultySelected, degreeSelected, semSelected])
 
   useEffect(() => {
-    const savedSelections = JSON.parse(
-      localStorage.getItem('gpaSelections') || '{}'
-    )
-    if (savedSelections.faculty) setFacultySelected(savedSelections.faculty)
-    if (savedSelections.degree) setDegreeSelected(savedSelections.degree)
-    if (savedSelections.semester) setSemSelected(savedSelections.semester)
-  }, [])
-
-  useEffect(() => {
-    if (
-      facultySelected !== DEFAULT_FACULTY &&
-      degreeSelected !== DEFAULT_DEGREE &&
-      semSelected !== DEFAULT_SEMESTER
-    ) {
-      const subs =
-        (subjectData as any)?.[facultySelected]?.[degreeSelected]?.[
-          semSelected
-        ] || []
-      setSubjects(subs)
-      setGrades({})
-    } else {
-      setSubjects([])
-      setGrades({})
-    }
-  }, [facultySelected, degreeSelected, semSelected])
-
-  const dropdownsSelected =
-    facultySelected !== 'Select Your Faculty' &&
-    degreeSelected !== 'Select Your Degree Program' &&
-    semSelected !== 'Select Your Semester'
+    const newSelectedElectiveCredits = electives
+      .filter((elective) => grades[elective.code])
+      .reduce((sum, elective) => sum + elective.credits, 0)
+    setSelectedElectiveCredits(newSelectedElectiveCredits)
+  }, [grades, electives])
 
   useEffect(() => {
     const newGPA = calculateGPA()
@@ -173,7 +157,12 @@ function Grades() {
     let totalCredits = 0
     let totalPoints = 0
 
-    subjects.forEach((sub) => {
+    const allSubjects = [
+      ...subjects,
+      ...electives.filter((elective) => grades[elective.code]),
+    ]
+
+    allSubjects.forEach((sub) => {
       const grade = grades[sub.code]
       const point = gradePoints[grade]
 
@@ -187,8 +176,20 @@ function Grades() {
       ? 0
       : Number((totalPoints / totalCredits).toFixed(3))
   }
-  const allGradesSelected = subjects.every((sub) => grades[sub.code])
 
+  const allCoreGradesSelected = subjects.every((sub) => grades[sub.code])
+  const isElectiveCreditValid =
+    selectedElectiveCredits === electiveCreditsRequired
+  const hasExcessElectiveCredits =
+    selectedElectiveCredits > electiveCreditsRequired
+
+  const dropdownsSelected =
+    facultySelected !== DEFAULT_FACULTY &&
+    degreeSelected !== DEFAULT_DEGREE &&
+    semSelected !== DEFAULT_SEMESTER
+
+  const canSave =
+    dropdownsSelected && allCoreGradesSelected && isElectiveCreditValid
 
   return (
     <div className="min-h-screen flex flex-col bg-background text-foreground p-0 mt-0">
@@ -198,7 +199,6 @@ function Grades() {
             {/* Header */}
             <div className="flex justify-between items-center mb-8">
               <h1 className="text-3xl font-bold text-foreground">GPA Cal</h1>
-
               <button
                 onClick={toggleTheme}
                 className="p-3 rounded-full border border-border bg-card hover:bg-accent transition-colors duration-200 shadow-sm"
@@ -250,7 +250,7 @@ function Grades() {
                       disabled={
                         facultySelected === DEFAULT_FACULTY ||
                         Boolean(localStorage.getItem('lockedDegree')) ||
-                        (facultySelected === 'Select Your Faculty')
+                        facultySelected === 'Select Your Faculty'
                       }
                     >
                       <span className="truncate">{degreeSelected}</span>
@@ -302,11 +302,11 @@ function Grades() {
               </div>
             </div>
 
-            {/* Subjects Table */}
+            {/* Core Subjects Table */}
             {subjects.length > 0 && (
               <div className="mt-6 w-full">
                 <h2 className="text-2xl font-semibold mb-6 text-foreground">
-                  Subjects
+                  Core Subjects
                 </h2>
                 <div className="w-full overflow-x-auto rounded-lg border border-border shadow-sm">
                   <table className="min-w-full text-left bg-card text-sm sm:text-base">
@@ -344,67 +344,16 @@ function Grades() {
                             {sub.credits}
                           </td>
                           <td className="p-4 text-center">
-                            {/* Mobile version: only icon is clickable */}
-                            <div className="block md:hidden">
-                              <div className="flex items-center justify-between w-[105px] px-3 py-2 rounded-md bg-muted border border-border text-gray-900 dark:text-white">
-                                <span className="truncate">
-                                  {grades[sub.code] || 'Grade'}
-                                </span>
-                                <DropdownMenu>
-                                  <DropdownMenuTrigger asChild>
-                                    <button className="ml-2">
-                                      <ChevronDown className="h-[21px] w-[21px] opacity-70" />
-                                    </button>
-                                  </DropdownMenuTrigger>
-                                  <DropdownMenuContent className="w-[80px] bg-popover border-border">
-                                    {gradeOptions.map((grade) => (
-                                      <DropdownMenuItem
-                                        key={grade}
-                                        onSelect={() =>
-                                          setGrades((prev) => ({
-                                            ...prev,
-                                            [sub.code]: grade,
-                                          }))
-                                        }
-                                        className="hover:bg-accent focus:bg-accent"
-                                      >
-                                        {grade}
-                                      </DropdownMenuItem>
-                                    ))}
-                                  </DropdownMenuContent>
-                                </DropdownMenu>
-                              </div>
-                            </div>
-
-                            {/* Desktop version: whole button is clickable */}
-                            <div className="hidden md:block">
-                              <DropdownMenu>
-                                <DropdownMenuTrigger asChild>
-                                  <Button className="w-[105px] justify-between bg-muted border-border hover:bg-accent text-gray-900 dark:text-white">
-                                    <span className="truncate">
-                                      {grades[sub.code] || 'Grade'}
-                                    </span>
-                                    <ChevronDown className="h-4 w-4 ml-2 opacity-70" />
-                                  </Button>
-                                </DropdownMenuTrigger>
-                                <DropdownMenuContent className="w-[80px] bg-popover border-border">
-                                  {gradeOptions.map((grade) => (
-                                    <DropdownMenuItem
-                                      key={grade}
-                                      onSelect={() =>
-                                        setGrades((prev) => ({
-                                          ...prev,
-                                          [sub.code]: grade,
-                                        }))
-                                      }
-                                      className="hover:bg-accent focus:bg-accent"
-                                    >
-                                      {grade}
-                                    </DropdownMenuItem>
-                                  ))}
-                                </DropdownMenuContent>
-                              </DropdownMenu>
-                            </div>
+                            {/* Grade dropdown component */}
+                            <GradeDropdown
+                              selectedGrade={grades[sub.code]}
+                              onSelect={(grade) =>
+                                setGrades((prev) => ({
+                                  ...prev,
+                                  [sub.code]: grade,
+                                }))
+                              }
+                            />
                           </td>
                         </tr>
                       ))}
@@ -413,16 +362,101 @@ function Grades() {
                 </div>
               </div>
             )}
+
+            {/* Elective Subjects Table */}
+            {electives.length > 0 && (
+              <div className="mt-6 w-full">
+                <div className="flex justify-between items-center mb-6">
+                  <h2 className="text-2xl font-semibold text-foreground">
+                    Elective Subjects
+                  </h2>
+                  <div className="text-sm text-muted-foreground">
+                    Required Credits: {selectedElectiveCredits}/
+                    {electiveCreditsRequired}
+                  </div>
+                </div>
+                {hasExcessElectiveCredits && (
+                  <div className="mb-4 p-3 bg-red-100 dark:bg-red-900/20 text-red-700 dark:text-red-400 rounded-md">
+                    Warning: Selected elective credits (
+                    {selectedElectiveCredits}) exceed the required amount (
+                    {electiveCreditsRequired})
+                  </div>
+                )}
+                {!isElectiveCreditValid &&
+                  !hasExcessElectiveCredits &&
+                  selectedElectiveCredits > 0 && (
+                    <div className="mb-4 p-3 bg-yellow-100 dark:bg-yellow-900/20 text-yellow-700 dark:text-yellow-400 rounded-md">
+                      Note: You need to select more elective subjects to meet
+                      the credit requirement
+                    </div>
+                  )}
+                <div className="w-full overflow-x-auto rounded-lg border border-border shadow-sm">
+                  <table className="min-w-full text-left bg-card text-sm sm:text-base">
+                    <thead>
+                      <tr className="bg-muted border-b border-border">
+                        <th className="text-sm sm:text-base font-semibold text-muted-foreground p-3 min-w-[100px]">
+                          Code
+                        </th>
+                        <th className="p-3 min-w-[160px] text-sm sm:text-base font-semibold text-muted-foreground hidden sm:table-cell">
+                          Name
+                        </th>
+                        <th className="p-3 min-w-[60px] text-sm sm:text-base font-semibold text-muted-foreground text-center">
+                          Credits
+                        </th>
+                        <th className="p-3 min-w-[120px] text-sm text-center sm:text-base font-semibold text-muted-foreground">
+                          Your Grade
+                        </th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {electives.map((sub, index) => (
+                        <tr
+                          key={sub.code}
+                          className={`border-b border-border hover:bg-accent/50 transition-colors ${
+                            index % 2 === 0 ? 'bg-card' : 'bg-muted/30'
+                          }`}
+                        >
+                          <td className="p-4 sm:text-base font-mono text-sm">
+                            {sub.code}
+                          </td>
+                          <td className="p-4 text-sm sm:text-base hidden sm:table-cell">
+                            {sub.name}
+                          </td>
+                          <td className="p-4 text-sm font-semibold sm:text-base text-center">
+                            {sub.credits}
+                          </td>
+                          <td className="p-4 text-center">
+                            {/* Grade dropdown component */}
+                            <GradeDropdown
+                              selectedGrade={grades[sub.code]}
+                              onSelect={(grade) =>
+                                setGrades((prev) => ({
+                                  ...prev,
+                                  [sub.code]: grade,
+                                }))
+                              }
+                            />
+                          </td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            )}
+
             {/*GPA*/}
             {subjects.length > 0 && (
               <div className="mt-6 text-center">
-                {allGradesSelected ? (
+                {allCoreGradesSelected && isElectiveCreditValid ? (
                   <p className="text-lg sm:text-xl font-semibold text-green-600 dark:text-green-400">
                     GPA: <CountUp end={gpa} decimals={3} duration={1.5} />
                   </p>
                 ) : (
                   <p className="text-lg text-muted-foreground">
-                    Please select all grades to calculate GPA
+                    {!allCoreGradesSelected
+                      ? 'Please select all core subject grades'
+                      : 'Please select the required elective credits'}
                   </p>
                 )}
               </div>
@@ -430,10 +464,7 @@ function Grades() {
 
             <div className="mt-6">
               <button
-                disabled={
-                  !dropdownsSelected ||
-                  (subjects.length > 0 && !allGradesSelected)
-                }
+                disabled={!canSave}
                 className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition disabled:opacity-50 disabled:cursor-not-allowed"
                 onClick={handleSave}
               >
@@ -447,6 +478,50 @@ function Grades() {
         Developed by Toran
       </footer>
     </div>
+  )
+}
+
+// Grade Dropdown Component
+const GradeDropdown = ({
+  selectedGrade,
+  onSelect,
+}: {
+  selectedGrade?: string
+  onSelect: (grade: string) => void
+}) => {
+  return (
+    <DropdownMenu>
+      <DropdownMenuTrigger asChild>
+        <Button className="w-[105px] justify-between bg-muted border-border hover:bg-accent text-gray-900 dark:text-white">
+          <span className="truncate">{selectedGrade || 'Grade'}</span>
+          <ChevronDown className="h-4 w-4 ml-2 opacity-70" />
+        </Button>
+      </DropdownMenuTrigger>
+      <DropdownMenuContent className="w-[80px] bg-popover border-border">
+        {selectedGrade && (
+          <>
+            <DropdownMenuItem
+              onSelect={() => onSelect('')}
+              className="hover:bg-red-100 dark:hover:bg-red-900/20 text-red-600 dark:text-red-400 focus:bg-red-100 dark:focus:bg-red-900/20"
+            >
+              Remove
+            </DropdownMenuItem>
+            <DropdownMenuItem className="opacity-50 cursor-default" disabled>
+              ─────
+            </DropdownMenuItem>
+          </>
+        )}
+        {gradeOptions.map((grade) => (
+          <DropdownMenuItem
+            key={grade}
+            onSelect={() => onSelect(grade)}
+            className="hover:bg-accent focus:bg-accent"
+          >
+            {grade}
+          </DropdownMenuItem>
+        ))}
+      </DropdownMenuContent>
+    </DropdownMenu>
   )
 }
 
