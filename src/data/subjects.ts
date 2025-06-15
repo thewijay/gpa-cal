@@ -245,6 +245,119 @@ export const subjectData: FacultyMap = {
         ],
         electiveCreditsRequired: 6,
       },
+      'Semester 7': {
+        core: [
+          {
+            code: 'IS7101',
+            name: 'Research Methodologies',
+            credits: 2,
+          },
+          {
+            code: 'IS7102',
+            name: 'IT Law',
+            credits: 1,
+          },
+          { code: 'IS7103', name: 'Business Process Simulation', credits: 2 },
+          {
+            code: 'IS7104',
+            name: 'Enterprise Modelling Ontologies',
+            credits: 2,
+          },
+          {
+            code: 'IS7105',
+            name: 'Organizational Behavior & Management',
+            credits: 1,
+          },
+          { code: 'IS7106', name: 'Cloud Computing', credits: 2 },
+        ],
+        electives: [
+          {
+            code: 'IS7107',
+            name: 'Mobile Application Development',
+            credits: 1,
+          },
+          {
+            code: 'IS7108',
+            name: 'Web Service Technologies',
+            credits: 2,
+          },
+          {
+            code: 'IS7109',
+            name: 'Geographical Information Systems',
+            credits: 2,
+          },
+          {
+            code: 'IS7110',
+            name: 'Statistical Distribution & Inferences',
+            credits: 1,
+          },
+          {
+            code: 'IS7111',
+            name: 'Advanced Programming Practicum',
+            credits: 1,
+          },
+          {
+            code: 'IS7112',
+            name: 'Machine Learning',
+            credits: 2,
+          },
+        ],
+        electiveCreditsRequired: 4,
+      },
+      'Semester 8': {
+        core: [
+          {
+            code: 'IS8101',
+            name: 'Research Project in IS',
+            credits: 8,
+          },
+          {
+            code: 'IS8102',
+            name: 'Business/IT Alignment',
+            credits: 2,
+          },
+          { code: 'IS8103', name: 'Human Resource Management', credits: 2 },
+          {
+            code: 'IS8104',
+            name: 'Scientific Communication ',
+            credits: 1,
+          },
+          {
+            code: 'IS8105',
+            name: 'IS Economics',
+            credits: 2,
+          },
+          { code: 'IS8106', name: 'Computer System Security', credits: 2 },
+        ],
+        electives: [
+          {
+            code: 'IS8107',
+            name: 'Supply Chain Management',
+            credits: 2,
+          },
+          {
+            code: 'IS8108',
+            name: 'Advanced Computer Networks',
+            credits: 2,
+          },
+          {
+            code: 'IS8109',
+            name: 'Process Mining',
+            credits: 2,
+          },
+          {
+            code: 'IS8110',
+            name: 'Digital Business Model',
+            credits: 1,
+          },
+          {
+            code: 'IS8111',
+            name: 'Game Development',
+            credits: 2,
+          },
+        ],
+        electiveCreditsRequired: 4,
+      },
     },
     'Software Engineering': {
       'Semester 1': {
