@@ -177,13 +177,13 @@ const MainPage = () => {
                         exit="exit"
                         layout
                       >
-                        <td className="p-2 sm:p-4 font-mono text-sm sm:text-base text-left border truncate">
+                        <td className="p-2 sm:p-4 font-mono font-medium text-sm sm:text-base text-left border truncate">
                           {s.semester}
                         </td>
-                        <td className="p-2 sm:p-4 font-mono text-sm sm:text-base text-center border">
+                        <td className="p-2 sm:p-4 font-mono font-semibold text-sm sm:text-base text-center border">
                           {s.gpa}
                         </td>
-                        <td className="p-2 sm:p-4 font-mono text-sm sm:text-base text-center border">
+                        <td className="p-2 sm:p-4 font-mono font-semibold text-sm sm:text-base text-center border">
                           {s.credits}
                         </td>
                         <td className="p-1 sm:p-4 text-center border">
