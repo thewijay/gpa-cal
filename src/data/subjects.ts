@@ -245,6 +245,17 @@ export const subjectData: FacultyMap = {
         ],
         electiveCreditsRequired: 6,
       },
+      'Semester 6': {
+        core: [
+          {
+            code: 'IS6101',
+            name: 'Industrial Training',
+            credits: 6,
+          },
+        ],
+        electives: [],
+        electiveCreditsRequired: 0,
+      },
       'Semester 7': {
         core: [
           {
