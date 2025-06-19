@@ -373,9 +373,6 @@ export const subjectData: FacultyMap = {
           },
           { code: 'SE1106', name: 'Fundamentals of Mathematics', credits: 2 },
           { code: 'SE1107', name: 'Fundamentals of Statistics', credits: 2 },
-          { code: 'SE1108', name: 'Communication Skills I', credits: 1 },
-          { code: 'SE1109', name: 'Academic Integrity', credits: 1 },
-          { code: 'SE-EGP-1101', name: 'General English I', credits: 2 },
         ],
         electives: [],
         electiveCreditsRequired: 0,
@@ -402,11 +399,292 @@ export const subjectData: FacultyMap = {
           },
           { code: 'SE2107', name: 'Analysis Fundamentals', credits: 2 },
           { code: 'SE2108', name: 'Advanced Mathematics', credits: 2 },
-          { code: 'SE2109', name: 'Communication Skills II', credits: 1 },
-          { code: 'SE-EGP-1201', name: 'General English II', credits: 2 },
         ],
         electives: [],
         electiveCreditsRequired: 0,
+      },
+      'Semester 3': {
+        core: [
+          {
+            code: 'SE3101',
+            name: 'Network Protocols',
+            credits: 2,
+          },
+          { code: 'SE3102', name: 'Formal Methods', credits: 2 },
+          {
+            code: 'SE3103',
+            name: 'Object Oriented Analysis and Design',
+            credits: 2,
+          },
+          { code: 'SE3104', name: 'Requirements Validation ', credits: 2 },
+          {
+            code: 'SE3105',
+            name: 'Software Design Concepts',
+            credits: 2,
+          },
+          {
+            code: 'SE3106',
+            name: 'Web Systems and Technologies',
+            credits: 2,
+          },
+          {
+            code: 'SE3107',
+            name: 'Software Engineering Foundations',
+            credits: 2,
+          },
+        ],
+        electives: [],
+        electiveCreditsRequired: 0,
+      },
+      'Semester 4': {
+        core: [
+          {
+            code: 'SE4101',
+            name: 'Security Fundamentals',
+            credits: 2,
+          },
+          {
+            code: 'SE4102',
+            name: 'Software Verification and Validation',
+            credits: 2,
+          },
+          {
+            code: 'SE4103',
+            name: 'Software Configuration Management',
+            credits: 2,
+          },
+          { code: 'SE4104', name: 'Software Project Management', credits: 2 },
+          {
+            code: 'SE4105',
+            name: 'Human Computer Interaction Design',
+            credits: 2,
+          },
+          {
+            code: 'SE4106',
+            name: 'Projects in Web Systems and Technologies',
+            credits: 3,
+          },
+          {
+            code: 'SE4107',
+            name: 'Industrial Inspection',
+            credits: 1,
+          },
+          {
+            code: 'SE4108',
+            name: 'Risk Management',
+            credits: 2,
+          },
+          {
+            code: 'SE4109',
+            name: 'Communication Skills',
+            credits: 2,
+          },
+          {
+            code: 'SE4110',
+            name: 'Management Information Systems',
+            credits: 2,
+          },
+        ],
+        electives: [],
+        electiveCreditsRequired: 0,
+      },
+      'Semester 5': {
+        core: [
+          {
+            code: 'SE5101',
+            name: 'Computer and Network Security',
+            credits: 2,
+          },
+          {
+            code: 'SE5102',
+            name: 'Software Testing',
+            credits: 2,
+          },
+          {
+            code: 'SE5103',
+            name: 'Product Assurance',
+            credits: 2,
+          },
+          { code: 'SE5104', name: 'Mini Project', credits: 3 },
+          {
+            code: 'SE5105',
+            name: 'Evolution processes and activities',
+            credits: 1,
+          },
+        ],
+        electives: [
+          {
+            code: 'SE5106',
+            name: 'IT Auditing',
+            credits: 2,
+          },
+          {
+            code: 'SE5107',
+            name: 'Human Resource Management',
+            credits: 2,
+          },
+          {
+            code: 'SE5108',
+            name: 'Geographic Information Systems',
+            credits: 2,
+          },
+          {
+            code: 'SE5109',
+            name: 'Logistic System and Transportation Management',
+            credits: 2,
+          },
+          {
+            code: 'SE5110',
+            name: 'Business Intelligence',
+            credits: 2,
+          },
+        ],
+        electiveCreditsRequired: 4,
+      },
+      'Semester 6': {
+        core: [
+          {
+            code: 'SE6101',
+            name: 'Community Project',
+            credits: 3,
+          },
+          {
+            code: 'SE6102',
+            name: 'Cloud Computing',
+            credits: 2,
+          },
+          {
+            code: 'SE6103',
+            name: 'Parallel and Distributed Systems',
+            credits: 2,
+          },
+          {
+            code: 'SE6104',
+            name: 'Advanced Database Management Systems',
+            credits: 2,
+          },
+          {
+            code: 'SE6105',
+            name: 'Software Architecture',
+            credits: 2,
+          },
+          {
+            code: 'SE6106',
+            name: 'Software Design Patterns',
+            credits: 2,
+          },
+          {
+            code: 'SE6107',
+            name: 'Software Design Evaluation',
+            credits: 2,
+          },
+          {
+            code: 'SE6108',
+            name: 'Current Topics in Software Engineering',
+            credits: 1,
+          },
+        ],
+        electives: [
+          {
+            code: 'SE6109',
+            name: 'Enterprise Modeling Ontologies',
+            credits: 2,
+          },
+          {
+            code: 'SE6110',
+            name: 'Software Engineering Economics',
+            credits: 2,
+          },
+          {
+            code: 'SE6111',
+            name: 'Social Computing',
+            credits: 2,
+          },
+          {
+            code: 'SE6112',
+            name: 'Semantic Web',
+            credits: 2,
+          },
+          {
+            code: 'SE6113',
+            name: 'Robotics',
+            credits: 2,
+          },
+        ],
+        electiveCreditsRequired: 4,
+      },
+      'Semester 7': {
+        core: [
+          {
+            code: 'SE7101',
+            name: 'Industrial Training',
+            credits: 6,
+          },
+        ],
+        electives: [],
+        electiveCreditsRequired: 0,
+      },
+      'Semester 8': {
+        core: [
+          {
+            code: 'SE8101',
+            name: 'Research Project',
+            credits: 8,
+          },
+          {
+            code: 'SE8102',
+            name: 'Research Methods',
+            credits: 2,
+          },
+          {
+            code: 'SE8103',
+            name: 'Service Oriented Architecture',
+            credits: 2,
+          },
+          {
+            code: 'SE8104',
+            name: 'Problem Analysis and Reporting',
+            credits: 2,
+          },
+          {
+            code: 'SE8105',
+            name: 'Machine Learning',
+            credits: 2,
+          },
+          {
+            code: 'SE8106',
+            name: 'Mobile Computing',
+            credits: 2,
+          },
+          {
+            code: 'SE8107',
+            name: 'Refactoring',
+            credits: 2,
+          },
+        ],
+        electives: [
+          {
+            code: 'SE8108',
+            name: 'Game Designing and Development',
+            credits: 2,
+          },
+          {
+            code: 'SE8109',
+            name: 'Data Mining',
+            credits: 2,
+          },
+          {
+            code: 'SE8110',
+            name: 'Big Data Analytics',
+            credits: 2,
+          },
+          {
+            code: 'SE8111',
+            name: 'Artificial Intelligence',
+            credits: 2,
+          },
+        ],
+        electiveCreditsRequired: 4,
       },
     },
     'Data Science': {
