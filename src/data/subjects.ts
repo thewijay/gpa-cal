@@ -716,7 +716,7 @@ export const subjectData: FacultyMap = {
       'Semester 2': {
         core: [
           { code: 'DS2101', name: 'Operating Systems', credits: 2 },
-          { code: 'DS2102', name: 'Data Structures ', credits: 2 },
+          { code: 'DS2102', name: 'Data Structures', credits: 2 },
           { code: 'DS2103', name: 'Linear Algebra', credits: 2 },
           { code: 'DS2104', name: 'Object Oriented Programing', credits: 2 },
           {
@@ -730,6 +730,190 @@ export const subjectData: FacultyMap = {
         ],
         electives: [],
         electiveCreditsRequired: 0,
+      },
+      'Semester 3': {
+        core: [
+          { code: 'DS3101', name: 'Probability Theory', credits: 2 },
+          { code: 'DS3102', name: 'Regression Analysis', credits: 2 },
+          { code: 'DS3103', name: 'Multivariate Calculus', credits: 2 },
+          { code: 'DS3104', name: 'Real World Analytics', credits: 1 },
+          {
+            code: 'DS3105',
+            name: 'Computer Networking',
+            credits: 2,
+          },
+          { code: 'DS3106', name: 'Data Warehousing', credits: 2 },
+          { code: 'DS3107', name: 'Web Programming II ', credits: 2 },
+        ],
+        electives: [],
+        electiveCreditsRequired: 0,
+      },
+      'Semester 4': {
+        core: [
+          {
+            code: 'DS4101',
+            name: 'Advanced Database Management Systems',
+            credits: 2,
+          },
+          {
+            code: 'DS4102',
+            name: 'Scientific Writing & Documentation',
+            credits: 1,
+          },
+          { code: 'DS4103', name: 'Software Engineering', credits: 2 },
+          { code: 'DS4104', name: 'Data Visualization', credits: 2 },
+          {
+            code: 'DS4105',
+            name: 'Capstone Project in Data Science II',
+            credits: 2,
+          },
+          { code: 'DS4106', name: 'Applied Data Mining', credits: 2 },
+          {
+            code: 'DS4107',
+            name: 'Social and Professional Issues in Computing',
+            credits: 2,
+          },
+          { code: 'DS4108', name: 'Business Intelligence', credits: 2 },
+          { code: 'DS4109', name: 'Discrete Mathematics', credits: 2 },
+          { code: 'DS4110', name: 'Artificial Intelligence', credits: 2 },
+        ],
+        electives: [],
+        electiveCreditsRequired: 0,
+      },
+      'Semester 5': {
+        core: [
+          {
+            code: 'DS5101',
+            name: 'Semantic Web',
+            credits: 2,
+          },
+          {
+            code: 'DS5102',
+            name: 'Time Series Analysis and Forecasting',
+            credits: 2,
+          },
+          { code: 'DS5103', name: 'Information Security', credits: 2 },
+          { code: 'DS5104', name: 'Machine Learning', credits: 2 },
+          {
+            code: 'DS5105',
+            name: 'Linear Programming',
+            credits: 2,
+          },
+          { code: 'DS5106', name: 'Graph Theory', credits: 2 },
+        ],
+        electives: [
+          { code: 'DS5107', name: 'Image Processing', credits: 2 },
+          { code: 'DS5108', name: 'Mobile Computing', credits: 2 },
+          {
+            code: 'DS5109',
+            name: 'Data Science for Bioinformatics',
+            credits: 2,
+          },
+          { code: 'DS5110', name: 'Human Resource Management', credits: 2 },
+          {
+            code: 'DS5111',
+            name: 'Parallel and Distributed Computing',
+            credits: 2,
+          },
+        ],
+        electiveCreditsRequired: 4,
+      },
+      'Semester 6': {
+        core: [
+          {
+            code: 'DS6101',
+            name: 'Introduction to Deep Learning',
+            credits: 1,
+          },
+          {
+            code: 'DS6102',
+            name: 'Bayesian Learning and Graphical Models',
+            credits: 2,
+          },
+          { code: 'DS6103', name: 'Mathematical Optimization', credits: 2 },
+          { code: 'DS6104', name: 'Industrial Training', credits: 6 },
+        ],
+        electives: [
+          { code: 'DS6105', name: 'Web Services', credits: 2 },
+          { code: 'DS6106', name: 'Cloud Computing', credits: 2 },
+          { code: 'DS6107', name: 'Business Process Management', credits: 2 },
+          { code: 'DS6108', name: 'Software Quality Assurance', credits: 2 },
+          { code: 'DS6108', name: 'Fraud and Anomaly Detection', credits: 2 },
+        ],
+        electiveCreditsRequired: 2,
+      },
+      'Semester 7': {
+        core: [
+          {
+            code: 'DS7101',
+            name: 'Research Method',
+            credits: 2,
+          },
+          {
+            code: 'DS7102',
+            name: 'Advanced Deep Learning',
+            credits: 2,
+          },
+          {
+            code: 'DS7103',
+            name: 'Emerging Trends in Data Science',
+            credits: 1,
+          },
+          { code: 'DS7104', name: 'Numerical Methods', credits: 2 },
+          { code: 'DS7105', name: 'Natural Language Processing', credits: 2 },
+        ],
+        electives: [
+          {
+            code: 'DS7106',
+            name: 'Entrepreneurship and Innovation',
+            credits: 2,
+          },
+          { code: 'DS7107', name: 'Internet of Things', credits: 2 },
+          {
+            code: 'DS7108',
+            name: 'Design Patterns and Anti-patterns',
+            credits: 2,
+          },
+          { code: 'DS7109', name: 'Ontology Engineering', credits: 2 },
+          { code: 'DS7110', name: 'Blockchain and Cryptocurrency', credits: 2 },
+        ],
+        electiveCreditsRequired: 4,
+      },
+      'Semester 8': {
+        core: [
+          {
+            code: 'DS8101',
+            name: 'Research Project in Data Science',
+            credits: 8,
+          },
+          {
+            code: 'DS8102',
+            name: 'Information Retrieval and Web Analytics',
+            credits: 2,
+          },
+          {
+            code: 'DS8103',
+            name: 'Reinforcement Learning',
+            credits: 2,
+          },
+          { code: 'DS8104', name: 'Computational Intelligence', credits: 2 },
+          {
+            code: 'DS8105',
+            name: 'Business Analytics and Applications',
+            credits: 1,
+          },
+        ],
+        electives: [
+          {
+            code: 'DS8106',
+            name: 'Geographical Information Systems',
+            credits: 2,
+          },
+          { code: 'DS8107', name: 'Digital Forensics', credits: 2 },
+          { code: 'DS8108', name: 'Business Process Simulation', credits: 2 },
+          { code: 'DS8109', name: 'Robotics', credits: 2 },
+        ],
+        electiveCreditsRequired: 2,
       },
     },
     'Information Systems': {
