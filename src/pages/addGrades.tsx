@@ -1,6 +1,6 @@
 import { Button } from '../components/ui/button'
 import { ChevronDown } from 'lucide-react'
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useCallback } from 'react'
 import {
   subjectData,
   type Subject,
@@ -143,12 +143,7 @@ function Grades() {
     setSelectedElectiveCredits(newSelectedElectiveCredits)
   }, [grades, electives])
 
-  useEffect(() => {
-    const newGPA = calculateGPA()
-    setGPA(newGPA)
-  }, [grades, subjects])
-
-  const calculateGPA = () => {
+  const calculateGPA = useCallback(() => {
     let totalCredits = 0
     let totalPoints = 0
 
@@ -170,7 +165,12 @@ function Grades() {
     return totalCredits === 0
       ? 0
       : Number((totalPoints / totalCredits).toFixed(3))
-  }
+  }, [subjects, electives, grades])
+
+  useEffect(() => {
+    const newGPA = calculateGPA()
+    setGPA(newGPA)
+  }, [calculateGPA])
 
   const allCoreGradesSelected = subjects.every(
     (sub: Subject) => grades[sub.code]

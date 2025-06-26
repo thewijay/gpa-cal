@@ -29,7 +29,6 @@ const MainPage = () => {
     const savedData = JSON.parse(
       localStorage.getItem('gpaData') || '[]'
     ) as Grade[]
-    // Sort semesters by extracting and comparing semester numbers
     const sortedData = [...savedData].sort((a, b) => {
       const semesterA = parseInt(a.semester.split(' ')[1])
       const semesterB = parseInt(b.semester.split(' ')[1])
