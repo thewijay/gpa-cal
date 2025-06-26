@@ -10,4 +10,22 @@ export default defineConfig({
       '@': path.resolve(__dirname, './src'),
     },
   },
+  build: {
+    rollupOptions: {
+      output: {
+        manualChunks: {
+          vendor: ['react', 'react-dom'],
+          animations: ['framer-motion', 'react-countup'],
+          ui: [
+            '@radix-ui/react-dropdown-menu',
+            '@radix-ui/react-slot',
+            'lucide-react',
+          ],
+          router: ['react-router-dom'],
+          utils: ['class-variance-authority', 'clsx', 'tailwind-merge'],
+        },
+      },
+    },
+    chunkSizeWarningLimit: 600,
+  },
 })

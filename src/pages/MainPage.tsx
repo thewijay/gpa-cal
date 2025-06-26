@@ -1,6 +1,6 @@
 import { useNavigate } from 'react-router-dom'
 import { useTheme } from '../components/theme-provider'
-import { Sun, Moon, Trash2 } from 'lucide-react'
+import { Sun, Moon, Trash2, Edit3 } from 'lucide-react'
 import { useEffect, useState } from 'react'
 import CountUp from 'react-countup'
 import { motion, AnimatePresence } from 'framer-motion'
@@ -10,6 +10,9 @@ type Grade = {
   gpa: number
   semester: string
   credits: number
+  grades?: Record<string, string>
+  faculty?: string
+  degree?: string
 }
 
 const MainPage = () => {
@@ -59,6 +62,28 @@ const MainPage = () => {
       localStorage.removeItem('lockedDegree')
       localStorage.removeItem('gpaSelections')
       setSemesters([])
+    }
+  }
+
+  const handleEditSemester = (semester: Grade) => {
+    // Check if the semester has grades stored
+    if (!semester.grades || Object.keys(semester.grades).length === 0) {
+      // Show a warning for old data
+      if (
+        window.confirm(
+          `This semester was saved before the edit feature was available. ` +
+            `You can still edit it, but you'll need to re-enter all the grades. ` +
+            `Do you want to continue?`
+        )
+      ) {
+        // Store the semester data for editing
+        localStorage.setItem('editingSemester', JSON.stringify(semester))
+        navigate('/addGrades')
+      }
+    } else {
+      // Store the semester data for editing
+      localStorage.setItem('editingSemester', JSON.stringify(semester))
+      navigate('/addGrades')
     }
   }
 
@@ -160,8 +185,8 @@ const MainPage = () => {
                     <th className="font-semibold p-2 sm:p-3 min-w-[60px] sm:min-w-[150px] text-center border">
                       Credits
                     </th>
-                    <th className="font-semibold p-2 sm:p-3 w-[50px] sm:w-[80px] text-center border">
-                      Action
+                    <th className="font-semibold p-2 sm:p-3 w-[80px] sm:w-[120px] text-center border">
+                      Actions
                     </th>
                   </tr>
                 </thead>
@@ -186,13 +211,30 @@ const MainPage = () => {
                           {s.credits}
                         </td>
                         <td className="p-1 sm:p-4 text-center border">
-                          <button
-                            onClick={() => handleDeleteSemester(s.semester)}
-                            className="p-1 sm:p-2 text-red-500 hover:text-red-700 dark:text-red-400 dark:hover:text-red-300 transition-colors"
-                            title="Delete semester"
-                          >
-                            <Trash2 className="w-4 h-4 sm:w-[21px] sm:h-[21px]" />
-                          </button>
+                          <div className="flex justify-center gap-1 sm:gap-2">
+                            <button
+                              onClick={() => handleEditSemester(s)}
+                              className={`p-1 sm:p-2 transition-colors ${
+                                s.grades && Object.keys(s.grades).length > 0
+                                  ? 'text-blue-500 hover:text-blue-700 dark:text-blue-400 dark:hover:text-blue-300'
+                                  : 'text-gray-400 hover:text-gray-600 dark:text-gray-500 dark:hover:text-gray-400'
+                              }`}
+                              title={
+                                s.grades && Object.keys(s.grades).length > 0
+                                  ? 'Edit semester (grades available)'
+                                  : 'Edit semester (grades will need to be re-entered)'
+                              }
+                            >
+                              <Edit3 className="w-4 h-4 sm:w-[21px] sm:h-[21px]" />
+                            </button>
+                            <button
+                              onClick={() => handleDeleteSemester(s.semester)}
+                              className="p-1 sm:p-2 text-red-500 hover:text-red-700 dark:text-red-400 dark:hover:text-red-300 transition-colors"
+                              title="Delete semester"
+                            >
+                              <Trash2 className="w-4 h-4 sm:w-[21px] sm:h-[21px]" />
+                            </button>
+                          </div>
                         </td>
                       </motion.tr>
                     ))}

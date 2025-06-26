@@ -9,7 +9,7 @@ import {
 import { gradeOptions } from '../data/grades'
 import { gradePoints } from '../data/gradePoints'
 import { useTheme } from '../components/theme-provider'
-import { Sun, Moon } from 'lucide-react'
+import { Sun, Moon, ArrowLeft } from 'lucide-react'
 import { useNavigate } from 'react-router-dom'
 import CountUp from 'react-countup'
 import {
@@ -27,11 +27,17 @@ type GPAEntry = {
   semester: string
   gpa: number
   credits: number
+  grades?: Record<string, string>
+  faculty?: string
+  degree?: string
 }
 
 function Grades() {
   const [gpa, setGPA] = useState<number>(0)
   const navigate = useNavigate()
+  const [isEditing, setIsEditing] = useState(false)
+  const [editingSemesterData, setEditingSemesterData] =
+    useState<GPAEntry | null>(null)
   const facultyOptions = Object.keys(subjectData)
   const [facultySelected, setFacultySelected] = useState(DEFAULT_FACULTY)
   const [degreeSelected, setDegreeSelected] = useState(DEFAULT_DEGREE)
@@ -58,6 +64,9 @@ function Grades() {
       semester: semSelected,
       gpa,
       credits: totalCredits,
+      grades: grades, // Store the grades for future editing
+      faculty: facultySelected,
+      degree: degreeSelected,
     }
 
     const existingData = JSON.parse(
@@ -71,7 +80,14 @@ function Grades() {
     localStorage.setItem('gpaData', JSON.stringify(updatedData))
     localStorage.setItem('lockedFaculty', facultySelected)
     localStorage.setItem('lockedDegree', degreeSelected)
-    localStorage.setItem('showToast', 'your Grades successfully saved!')
+
+    const successMessage = isEditing
+      ? `${semSelected} grades updated successfully!`
+      : 'Your grades successfully saved!'
+    localStorage.setItem('showToast', successMessage)
+
+    // Clean up editing data
+    localStorage.removeItem('editingSemester')
     navigate('/')
   }
 
@@ -82,14 +98,50 @@ function Grades() {
     const lockedFaculty = localStorage.getItem('lockedFaculty')
     const lockedDegree = localStorage.getItem('lockedDegree')
 
-    if (lockedFaculty) setFacultySelected(lockedFaculty)
-    else if (savedSelections.faculty)
-      setFacultySelected(savedSelections.faculty)
+    // Check if we're in editing mode
+    const editingData = localStorage.getItem('editingSemester')
+    if (editingData) {
+      try {
+        const semesterData = JSON.parse(editingData) as GPAEntry
+        setIsEditing(true)
+        setEditingSemesterData(semesterData)
 
-    if (lockedDegree) setDegreeSelected(lockedDegree)
-    else if (savedSelections.degree) setDegreeSelected(savedSelections.degree)
+        // Set the semester selection
+        setSemSelected(semesterData.semester)
 
-    if (savedSelections.semester) setSemSelected(savedSelections.semester)
+        // Set faculty and degree from editing data
+        if (semesterData.faculty) {
+          setFacultySelected(semesterData.faculty)
+        } else {
+          // Fallback to locked values if available
+          if (lockedFaculty) setFacultySelected(lockedFaculty)
+          else if (savedSelections.faculty)
+            setFacultySelected(savedSelections.faculty)
+        }
+        if (semesterData.degree) {
+          setDegreeSelected(semesterData.degree)
+        } else {
+          // Fallback to locked values if available
+          if (lockedDegree) setDegreeSelected(lockedDegree)
+          else if (savedSelections.degree)
+            setDegreeSelected(savedSelections.degree)
+        }
+      } catch (error) {
+        // If parsing fails, clean up and continue normally
+        localStorage.removeItem('editingSemester')
+        console.error('Error parsing editing data:', error)
+      }
+    } else {
+      // Not editing, use locked values or saved selections
+      if (lockedFaculty) setFacultySelected(lockedFaculty)
+      else if (savedSelections.faculty)
+        setFacultySelected(savedSelections.faculty)
+
+      if (lockedDegree) setDegreeSelected(lockedDegree)
+      else if (savedSelections.degree) setDegreeSelected(savedSelections.degree)
+
+      if (savedSelections.semester) setSemSelected(savedSelections.semester)
+    }
   }, [])
 
   const savedSemesters = JSON.parse(
@@ -103,10 +155,10 @@ function Grades() {
   const usedSemesters = savedSemesters.map((entry) => entry.semester)
 
   useEffect(() => {
-    if (usedSemesters.includes(semSelected)) {
+    if (usedSemesters.includes(semSelected) && !isEditing) {
       setSemSelected(DEFAULT_SEMESTER)
     }
-  }, [semSelected, usedSemesters])
+  }, [semSelected, usedSemesters, isEditing])
 
   const degreeOptions =
     facultySelected !== DEFAULT_FACULTY
@@ -120,7 +172,10 @@ function Grades() {
             string,
             SemesterSubjects
           >) || {}
-        ).filter((sem) => !usedSemesters.includes(sem))
+        ).filter(
+          (sem) =>
+            !usedSemesters.includes(sem) || (isEditing && sem === semSelected)
+        )
       : []
 
   useEffect(() => {
@@ -131,10 +186,31 @@ function Grades() {
         setSubjects(semesterData.core || [])
         setElectives(semesterData.electives || [])
         setElectiveCreditsRequired(semesterData.electiveCreditsRequired || 0)
-        setGrades({})
+
+        // If not editing, clear grades
+        if (!isEditing) {
+          setGrades({})
+        }
+        // If editing and we have editing data with grades, load them
+        else if (isEditing && editingSemesterData?.grades) {
+          setGrades(editingSemesterData.grades)
+        }
       }
     }
-  }, [facultySelected, degreeSelected, semSelected])
+  }, [
+    facultySelected,
+    degreeSelected,
+    semSelected,
+    isEditing,
+    editingSemesterData,
+  ])
+
+  // Separate useEffect to handle loading grades when editingSemesterData changes
+  useEffect(() => {
+    if (isEditing && editingSemesterData?.grades && subjects.length > 0) {
+      setGrades(editingSemesterData.grades)
+    }
+  }, [isEditing, editingSemesterData, subjects])
 
   useEffect(() => {
     const newSelectedElectiveCredits = electives
@@ -195,7 +271,22 @@ function Grades() {
           <div className="container mx-auto px-4 sm:px-6 py-6">
             {/* Header */}
             <div className="flex justify-between items-center mb-8">
-              <h1 className="text-3xl font-bold text-foreground">GPA Cal</h1>
+              <div className="flex items-center gap-4">
+                {isEditing && (
+                  <button
+                    onClick={() => {
+                      localStorage.removeItem('editingSemester')
+                      navigate('/')
+                    }}
+                    className="p-2 rounded-full border border-border bg-card hover:bg-accent transition-colors duration-200"
+                  >
+                    <ArrowLeft className="w-5 h-5" />
+                  </button>
+                )}
+                <h1 className="text-3xl font-bold text-foreground">
+                  {isEditing ? `Edit ${semSelected}` : 'GPA Cal'}
+                </h1>
+              </div>
               <button
                 onClick={toggleTheme}
                 className="p-3 rounded-full border border-border bg-card hover:bg-accent transition-colors duration-200 shadow-sm"
@@ -276,7 +367,10 @@ function Grades() {
                   <DropdownMenuTrigger asChild>
                     <Button
                       className="w-full justify-between bg-muted border-border hover:bg-accent text-muted-foreground"
-                      disabled={degreeSelected === 'Select Your Degree Program'}
+                      disabled={
+                        degreeSelected === 'Select Your Degree Program' ||
+                        isEditing
+                      }
                     >
                       <span className="truncate">{semSelected}</span>
                       <ChevronDown className="h-4 w-4 ml-2 opacity-70" />
@@ -305,6 +399,19 @@ function Grades() {
                 <h2 className="text-2xl font-semibold mb-6 text-foreground">
                   Core Subjects
                 </h2>
+
+                {/* Show message if editing but no grades available */}
+                {isEditing &&
+                  (!editingSemesterData?.grades ||
+                    Object.keys(editingSemesterData.grades).length === 0) && (
+                    <div className="mb-4 p-3 bg-yellow-100 dark:bg-yellow-900/20 text-yellow-700 dark:text-yellow-400 rounded-md">
+                      <strong>Note:</strong> This semester was saved before the
+                      edit feature was available. You can still edit by
+                      selecting grades again, and they will be saved for future
+                      edits.
+                    </div>
+                  )}
+
                 <div className="w-full overflow-x-auto rounded-lg border border-border shadow-sm">
                   <table className="min-w-full text-left bg-card text-sm sm:text-base">
                     <thead>
@@ -465,7 +572,7 @@ function Grades() {
                 className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition disabled:opacity-50 disabled:cursor-not-allowed"
                 onClick={handleSave}
               >
-                Save Semester
+                {isEditing ? 'Update Semester' : 'Save Semester'}
               </button>
             </div>
           </div>
