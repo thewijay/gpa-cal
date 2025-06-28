@@ -93,7 +93,7 @@ A clean and user-friendly GPA calculator that simplifies the process of tracking
 
 ```bash
 # Clone the repository
-git clone <repository-url>
+git clone https://github.com/thewijay/gpa-cal.git
 cd gpa-cal
 
 # Install dependencies
@@ -297,7 +297,6 @@ npm run test:e2e
 
 - [ ] **Data Export/Import**: JSON backup and restore functionality
 - [ ] **Advanced Analytics**: GPA trends and semester comparisons
-- [ ] **Multiple Institution Support**: Support for different university systems
 - [ ] **Grade Predictor**: Predict required grades for target GPA
 - [ ] **PWA Support**: Offline functionality and app installation
 - [ ] **Accessibility Improvements**: Enhanced screen reader support
