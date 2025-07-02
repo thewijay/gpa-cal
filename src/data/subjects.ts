@@ -1263,6 +1263,7 @@ export const subjectData: FacultyMap = {
       },
     },
   },
+
   'Applied Sciences': {
     'Food Science and Technology': {
       'Semester 1': {
@@ -1685,6 +1686,623 @@ export const subjectData: FacultyMap = {
             code: 'FST4201',
             name: 'Research Project in Food Science and Technology',
             credits: 8,
+          },
+        ],
+        electives: [],
+        electiveCreditsRequired: 0,
+      },
+    },
+  },
+
+
+  
+// Management Studies Informations ========================================================================================
+
+
+
+'Management Studies': {
+    
+  
+  'Financial Management ': {  // M - Financial Management -
+      'Semester 1': {
+        core: [
+          {
+            code: 'FM1113',
+            name: 'Management Process',
+            credits: 3,
+          },
+          {
+            code: 'FM1123',
+            name: 'Financial Accounting',
+            credits: 3,
+          },
+          {
+            code: 'FM1132',
+            name: 'Micro Economics',
+            credits: 2,
+          },
+          {
+            code: 'FM1143',
+            name: 'Business Mathematics ',
+            credits: 3,
+          },
+          {
+            code: 'FM1153',
+            name: 'Information & Communication Technology and Computer Applications ',
+            credits: 3,
+          },
+          {
+            code: 'FM1162 ',
+            name: 'Business English I ',
+            credits: 2,
+          },
+        ],
+        electives: [],
+        electiveCreditsRequired: 0,
+      },
+
+      'Semester 2': {
+        core: [
+          {
+            code: 'FM1213',
+            name: 'Fundamentals of Financial Management',
+            credits: 3,
+          },
+          {
+            code: 'FM1223',
+            name: 'Intermediate Financial Accounting',
+            credits: 3,
+          },
+          {
+            code: 'FM1232',
+            name: 'Macro Economics ',
+            credits: 2,
+          },
+          {
+            code: 'FM1243',
+            name: 'Business Statistics ',
+            credits: 3,
+          },
+          {
+            code: 'FM1253',
+            name: 'Marketing Management ',
+            credits: 3,
+          },
+          {
+            code: 'FM1263',
+            name: 'Human Resource Management',
+            credits: 3,
+          },
+          {
+            code: 'FM1272',
+            name: 'Business English II ',
+            credits: 2,
+          },
+        ],
+        electives: [],
+        electiveCreditsRequired: 0,
+      },
+
+      'Semester 3': {
+        core: [
+          {
+            code: 'FM2113',
+            name: 'Advanced Financial Management',
+            credits: 3,
+          },
+          {
+            code: 'FM2123',
+            name: 'Managerial Economics',
+            credits: 3,
+          },
+          {
+            code: 'FM2132',
+            name: 'Organizational Behaviour',
+            credits: 2,
+          },
+          {
+            code: 'FM2143',
+            name: 'Commercial Law',
+            credits: 3,
+          },
+          {
+            code: 'FM2151',
+            name: 'Industry Exposure Programme',
+            credits: 1,
+          },
+        ],
+        electives: [],
+        electiveCreditsRequired: 0,
+      },
+
+      'Semester 4': {
+        core: [
+          {
+            code: 'FM2213',
+            name: 'Investment Analysis & Portfolio Management',
+            credits: 3,
+          },
+          {
+            code: 'FM2223',
+            name: 'Cost & Management Accounting',
+            credits: 3,
+          },
+          {
+            code: 'FM2232',
+            name: 'Monetary Economics',
+            credits: 2,
+          },
+          {
+            code: 'FM2243',
+            name: 'Operations Management ',
+            credits: 3,
+          },
+          {
+            code: 'FM2252',
+            name: 'Taxation',
+            credits: 2,
+          },
+          {
+            code: 'FM2263',
+            name: 'Company & Banking Law',
+            credits: 3,
+          },
+          {
+            code: 'FM2272',
+            name: 'Business Communication I ',
+            credits: 2,
+          },
+        ],
+        electives: [],
+        electiveCreditsRequired: 0,
+      },
+
+      'Semester 5': {
+        core: [
+          {
+            code: 'FM3112',
+            name: 'Financial Derivatives',
+            credits: 2,
+          },
+          {
+            code: 'FM3123',
+            name: 'Advanced Financial Accounting',
+            credits: 3,
+          },
+          {
+            code: 'FM3132',
+            name: 'Computerized Accounting Systems',
+            credits: 2,
+          },
+          {
+            code: 'FM3143',
+            name: 'Auditing & Assurance Services',
+            credits: 3,
+          },
+          {
+            code: 'FM3153',
+            name: 'Management Information Systems',
+            credits: 3,
+          },
+          {
+            code: 'FM3163',
+            name: 'Research Methodology',
+            credits: 3,
+          },
+          {
+            code: 'FM3172',
+            name: 'Business Communication II ',
+            credits: 2,
+          },
+        ],
+        electives: [],
+        electiveCreditsRequired: 0,
+      },
+
+      'Semester 6': {
+        core: [
+          {
+            code: 'FM3211',
+            name: 'Finance Literature',
+            credits: 1,
+          },
+          
+          {
+            code: 'FM3223',
+            name: 'Behavioural Finance',
+            credits: 3,
+          },
+          {
+            code: 'FM3233',
+            name: 'Strategic Management',
+            credits: 3,
+          },
+          {
+            code: 'FM3243',
+            name: 'Operations Research',
+            credits: 3,
+          },
+          {
+            code: 'FM3262',
+            name: 'Introductory Econometrics',
+            credits: 2,
+          },
+          {
+            code: 'FM3272',
+            name: 'Personality & Professional Development',
+            credits: 2,
+          },
+        ],
+        electives: [
+          {
+            code: 'FM3253',
+            name: 'Entrepreneurship & Small Business Management',
+            credits: 3,
+          },
+          {
+            code: 'FM3253',
+            name: 'Innovations and Intellectual Property Management',
+            credits: 3,
+          },
+        ],
+        electiveCreditsRequired: 3,
+      },
+
+      'Semester 7': {
+        core: [
+          {
+            code: 'FM4113',
+            name: 'Strategic Financial Management',
+            credits: 3,
+          },
+          {
+            code: 'FM4123',
+            name: 'International Trade & Finance',
+            credits: 3,
+          },
+          {
+            code: 'FM4133',
+            name: 'Financial Statement Analysis',
+            credits: 3,
+          },
+          {
+            code: 'FM4142',
+            name: 'Public Sector Finance',
+            credits: 2,
+          },
+          {
+            code: 'FM4162',
+            name: 'Advanced Econometrics',
+            credits: 2,
+          },
+        ],
+        electives: [
+          {
+            code: 'FM4152',
+            name: 'Modelling Eco Business',
+            credits: 2,
+          },
+          {
+            code: 'FM4152',
+            name: 'Development Economics',
+            credits: 2,
+          },
+        ],
+        electiveCreditsRequired: 2,
+      },
+
+      'Semester 8': {
+        core: [
+          {
+            code: 'FM4216',
+            name: 'Thesis',
+            credits: 6,
+          },
+          {
+            code: 'FM4223',
+            name: 'Internship',
+            credits: 3,
+          },
+        ],
+        electives: [],
+        electiveCreditsRequired: 0,
+      },
+    },
+
+
+    'Banking and Insurance': {  // M - Banking and Insurance -
+      'Semester 1': {
+        core: [
+          {
+            code: 'BI1113',
+            name: 'Management Process',
+            credits: 3,
+          },
+          {
+            code: 'BI1123',
+            name: 'Financial Accounting',
+            credits: 3,
+          },
+          {
+            code: 'BI1132',
+            name: 'Micro Economics',
+            credits: 2,
+          },
+          {
+            code: 'BI1143',
+            name: 'Business Mathematics ',
+            credits: 3,
+          },
+          {
+            code: 'BI1153',
+            name: 'Information & Communication Technology and Computer Applications ',
+            credits: 3,
+          },
+          {
+            code: 'BI1162',
+            name: 'Business English I ',
+            credits: 2,
+          },
+        ],
+        electives: [],
+        electiveCreditsRequired: 0,
+      },
+
+      'Semester 2': {
+        core: [
+          {
+            code: 'BI1213',
+            name: 'Principles of Banking & Insurance',
+            credits: 3,
+          },
+          {
+            code: 'BI1223',
+            name: 'Financial Management',
+            credits: 3,
+          },
+          {
+            code: 'BI1232',
+            name: 'Macro Economics ',
+            credits: 2,
+          },
+          {
+            code: 'BI1243',
+            name: 'Business Statistics ',
+            credits: 3,
+          },
+          {
+            code: 'BI1253',
+            name: 'Marketing Management ',
+            credits: 3,
+          },
+          {
+            code: 'BI1263',
+            name: 'Human Resource Management',
+            credits: 3,
+          },
+          {
+            code: 'BI1272',
+            name: 'Business English II',
+            credits: 2,
+          },
+        ],
+        electives: [],
+        electiveCreditsRequired: 0,
+      },
+
+      'Semester 3': {
+        core: [
+          {
+            code: 'BI2112',
+            name: 'Financial Clients Management',
+            credits: 2,
+          },
+          {
+            code: 'BI2123',
+            name: 'Risk Management',
+            credits: 3,
+          },
+          {
+            code: 'BI2133',
+            name: 'Monitory Economics',
+            credits: 3,
+          },
+          {
+            code: 'BI2143',
+            name: 'Commercial Law',
+            credits: 3,
+          },
+          {
+            code: 'BI2151',
+            name: 'Industry Exposure Programme',
+            credits: 1,
+          },
+        ],
+        electives: [],
+        electiveCreditsRequired: 0,
+      },
+
+      'Semester 4': {
+        core: [
+          {
+            code: 'BI2213',
+            name: 'Bank Lending and Credit Management',
+            credits: 3,
+          },
+          {
+            code: 'BI2223',
+            name: 'Commercial Property Insurance',
+            credits: 3,
+          },
+          {
+            code: 'BI2234',
+            name: 'Life Insurance ',
+            credits: 4,
+          },
+          {
+            code: 'BI2243',
+            name: 'Investment Analysis and Portfolio Management',
+            credits: 3,
+          },
+          {
+            code: 'BI2253',
+            name: 'Cost & Management Accounting',
+            credits: 3,
+          },
+          {
+            code: 'BI2262',
+            name: 'Taxation',
+            credits: 2,
+          },
+          {
+            code: 'BI2272',
+            name: 'Business Communication I',
+            credits: 2,
+          },
+        ],
+        electives: [],
+        electiveCreditsRequired: 0,
+      },
+
+      'Semester 5': {
+        core: [
+          {
+            code: 'BI3113',
+            name: 'Liability & Miscellaneous Insurance',
+            credits: 3,
+          },
+          {
+            code: 'BI3123',
+            name: 'Domestic & International Banking',
+            credits: 3,
+          },
+          {
+            code: 'BI3132',
+            name: 'Micro Finance',
+            credits: 2,
+          },
+          {
+            code: 'BI3143',
+            name: 'Auditing & Assurance Services',
+            credits: 3,
+          },
+          {
+            code: 'BI3153',
+            name: 'Research Methodology',
+            credits: 3,
+          },
+          {
+            code: 'BI3162',
+            name: 'Business Communication II',
+            credits: 2,
+          },
+          {
+            code: 'BI3171',
+            name: 'Personality & Professional Development I',
+            credits: 1,
+          },
+        ],
+        electives: [],
+        electiveCreditsRequired: 0,
+      },
+
+      'Semester 6': {
+        core: [
+          {
+            code: 'BI3212',
+            name: 'Assets & Liability Management',
+            credits: 2,
+          },
+          
+          {
+            code: 'BI3222',
+            name: 'Marine & Aviation Insurance',
+            credits: 2,
+          },
+          {
+            code: 'BI3232',
+            name: 'Contemporary Issues in Banking and Insurance',
+            credits: 2,
+          },
+          {
+            code: 'BI3243',
+            name: 'Strategic Management',
+            credits: 3,
+          },
+          {
+            code: 'BI3253',
+            name: 'Operations Research', 
+            credits: 3,
+          },
+          {
+            code: 'BI3272',
+            name: 'Introductory Econometrics',
+            credits: 2,
+          },
+        ],
+        electives: [
+          {
+            code: 'BI3263',
+            name: 'Innovations & Intellectual Property Management',
+            credits: 3,
+          },
+          {
+            code: 'BI3263',
+            name: 'Entrepreneurship & Small Business Management',
+            credits: 3,
+          },
+        ],
+        electiveCreditsRequired: 3,
+      },
+
+      'Semester 7': {
+        core: [
+          {
+            code: 'BI4112',
+            name: 'Digital Banking and Finance',
+            credits: 2,
+          },
+          {
+            code: 'BI4123',
+            name: 'Actuarial Science',
+            credits: 3,
+          },
+          {
+            code: 'BI4133',
+            name: 'Underwriting and Claims Management',
+            credits: 3,
+          },
+          {
+            code: 'BI4143',
+            name: 'Reinsurance',
+            credits: 3,
+          },
+          {
+            code: 'BI4152',
+            name: 'Advanced Econometrics',
+            credits: 2,
+          },
+          {
+            code: 'BI4161',
+            name: 'Personality & Professional Development II',
+            credits: 1,
+          },
+        ],
+        electives: [],
+        electiveCreditsRequired: 0,
+      },
+
+      'Semester 8': {
+        core: [
+          {
+            code: 'BI4213',
+            name: 'Thesis',
+            credits: 6,
+          },
+          {
+            code: 'BI4226',
+            name: 'Internship',
+            credits: 3,
           },
         ],
         electives: [],
