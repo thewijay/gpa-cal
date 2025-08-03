@@ -2242,12 +2242,12 @@ export const subjectData: FacultyMap = {
         ],
         electives: [
           {
-            code: 'BI3263',
+            code: 'BI3263A',
             name: 'Innovations & Intellectual Property Management',
             credits: 3,
           },
           {
-            code: 'BI3263',
+            code: 'BI3263B',
             name: 'Entrepreneurship & Small Business Management',
             credits: 3,
           },
@@ -2306,6 +2306,365 @@ export const subjectData: FacultyMap = {
           },
         ],
         electives: [],
+        electiveCreditsRequired: 0,
+      },
+    },
+
+    'Business Management ': {  // M - Business Management -
+      'Semester 1': {
+        core: [
+          {
+            code: 'BM1113',
+            name: 'Management Principles and Practices',
+            credits: 3,
+          },
+          {
+            code: 'BM1123',
+            name: 'Financial Accounting and Theory',
+            credits: 3,
+          },
+          {
+            code: 'BM1133',
+            name: 'Business Mathematics',
+            credits: 3,
+          },
+          {
+            code: 'BM1141',
+            name: 'Self- Management and Personality Development',
+            credits: 1,
+          },
+          {
+            code: 'BM1151',
+            name: 'Presentation Skills Development',
+            credits: 1,
+          },
+          {
+            code: 'BM1163',
+            name: 'Introduction to ICT and Computer Applications',
+            credits: 3,
+          },
+          {
+            code: 'BM1173',
+            name: 'Business English I',
+            credits: 3,
+          },
+        ],
+        electives: [],
+        electiveCreditsRequired: 0,
+      },
+
+      'Semester 2': {
+        core: [
+          {
+            code: 'BM1213',
+            name: 'Organizational Behaviour',
+            credits: 3,
+          },
+          {
+            code: 'BM1223',
+            name: 'Business Statistics',
+            credits: 3,
+          },
+          {
+            code: 'BM1232',
+            name: 'Macroeconomics ',
+            credits: 2,
+          },
+          {
+            code: 'BM1241',
+            name: 'Professional Development',
+            credits: 1,
+          },
+          {
+            code: 'BM1252',
+            name: 'Business Ethics and Social Responsibility',
+            credits: 2,
+          },
+           // BM 1260* Academic Writing
+           {
+            code: 'BM1260*',
+            name: 'Acedemic Writing',
+            credits: 1, // Virtual Credits
+          },
+          {
+            code: 'BM1272',
+            name: 'Web Technologies',
+            credits: 2,
+          },
+          {
+            code: 'BM1283',
+            name: 'Business English II',
+            credits: 3,
+          },
+        ],
+        electives: [],
+        electiveCreditsRequired: 0,
+      },
+
+      'Semester 3': {
+        core: [
+          {
+            code: 'BM2113',
+            name: 'Internship I',
+            credits: 3, // Virtual Credits
+          },
+          {
+            code: 'BM2123',
+            name: 'Marketing Management',
+            credits: 3, // Virtual Credits
+          },
+          {
+            code: 'BI2133',
+            name: 'Human Resource Management',
+            credits: 3, // Virtual Credits
+          },
+          {
+            code: 'BM2142',
+            name: 'Green Management',
+            credits: 2, // Virtual Credits
+          },
+        ],
+        electives: [],
+        electiveCreditsRequired: 0,
+      },
+
+      'Semester 4': {
+        core: [
+          {
+            code: 'BM2213',
+            name: 'Management Accountancy',
+            credits: 3, // Virtual Credits
+          },
+          {
+            code: 'BM2223',
+            name: 'Entrepreneurship and Small Business Management',
+            credits: 3, // Virtual Credits
+          },
+          {
+            code: 'BM2232',
+            name: 'Macroeconomics',
+            credits: 2, // Virtual Credits
+          },
+          {
+            code: 'BM2242',
+            name: 'Industrial Relations and Employment Law',
+            credits: 2, // Virtual Credits
+          },
+          {
+            code: 'BM2252',
+            name: 'System Analysis and Design',
+            credits: 2, // Virtual Credits
+          },
+          {
+            code: 'BM2263',
+            name: 'Commercial Law',
+            credits: 3, // Virtual Credits
+          },
+          {
+            code: 'BM2271',
+            name: 'Occupational Health and Safety Management',
+            credits: 1, // Virtual Credits
+          },
+          {
+            code: 'BM2282',
+            name: 'Business Communication I',
+            credits: 1, // Virtual Credits
+          },
+        ],
+        electives: [],
+        electiveCreditsRequired: 0,
+      },
+
+      'Semester 5': {
+        core: [
+          {
+            code: 'BM3113',
+            name: 'Operational Research',
+            credits: 3, // Virtual Credits
+          },
+          {
+            code: 'BM3123',
+            name: 'Advanced Financial Accounting and Reporting',
+            credits: 3, // Virtual Credits
+          },
+          {
+            code: 'BM3132',
+            name: 'Managerial Economics',
+            credits: 2, // Virtual Credits
+          },
+          {
+            code: 'BM3142',
+            name: 'Creativity and Innovation Management',
+            credits: 2, // Virtual Credits
+          },
+          {
+            code: 'BM3162',
+            name: 'Management Information Systems',
+            credits: 2, // Virtual Credits
+          },
+          {
+            code: 'BM3173',
+            name: 'Business Communication II',
+            credits: 3, // Virtual Credits
+          },
+        ],
+        electives: [
+          {
+            code: 'BM3152(a)',
+            name: 'Indigenous Management Practices',
+            credits: 2, // Virtual Credits
+          },
+          {
+            code: 'BM3152(b)**',
+            name: 'Venture Creation',
+            credits: 2, // Virtual Credits
+          },
+        ],
+        electiveCreditsRequired: 0,
+      },
+
+      'Semester 6': {
+        core: [
+          {
+            code: 'BM3212',
+            name: 'Lean and Total Quality Management',
+            credits: 2, // Virtual Credits
+          },
+          
+          {
+            code: 'BM3223',
+            name: 'Financial Management',
+            credits: 3, // Virtual Credits
+          },
+          {
+            code: 'BM3233',
+            name: 'Research Methodology',
+            credits: 3, // Virtual Credits
+          },
+          {
+            code: 'BM3243',
+            name: 'Operations Management',
+            credits: 3, // Virtual Credits
+          },
+          {
+            code: 'BM3253',
+            name: 'Project and Event Management', 
+            credits: 3, // Virtual Credits
+          },
+          {
+            code: 'BM3273',
+            name: 'Digital Entrepreneurship and Marketing',
+            credits: 3, // Virtual Credits
+          },
+        ],
+        electives: [
+          {
+            code: 'BM3262(a)',
+            name: 'Taxation',
+            credits: 2,
+          },
+          {
+            code: 'BM3262(b)**',
+            name: 'Entrepreneurship Growth Management',
+            credits: 2,
+          },
+        ],
+        electiveCreditsRequired: 3,
+      },
+
+      'Semester 7': { 
+        core: [
+          {
+            code: 'BM4113',
+            name: 'Strategic Management',
+            credits: 3,
+          },
+          {
+            code: 'BM4122',
+            name: 'International Business Management',
+            credits: 2,
+          },
+          {
+            code: 'BM4132',
+            name: 'Change Management',
+            credits: 2,
+          },
+          {
+            code: 'BM4142',
+            name: 'Quantitative Data Analysis',
+            credits: 2,
+          },
+          {
+            code: 'BM4151',
+            name: 'Qualitative Data Analysis',
+            credits: 1,
+          },
+          {
+            code: 'BM4161',
+            name: 'Contemporary  Developments in Management',
+            credits: 1,
+          },
+        ],
+        electives: [
+           {
+            code: 'BM4172(a)',
+            name: 'Counselling in Organizations',
+            credits: 2,
+          },
+          {
+            code: 'BM4172(b)',
+            name: 'Supply Chain Management',
+            credits: 2,
+          },
+          {
+            code: 'BM4172(c)',
+            name: 'Company and Banking Law',
+            credits: 2,
+          },
+          {
+            code: 'BM4182(a)**',
+            name: 'Business Plan Development',
+            credits: 2,
+          },
+          {
+            code: 'BM4182(b)',
+            name: 'Business Analytics',
+            credits: 2,
+          },
+           {
+            code: 'BM4192(a)**',
+            name: 'Graphic Designing for Businesses',
+            credits: 2,
+          },
+          {
+            code: 'BM4182(b)',
+            name: 'Audit and Assurance ',
+            credits: 2,
+          },
+        ],
+        electiveCreditsRequired: 0,
+      },
+
+      'Semester 8': {
+        core: [
+          {
+            code: 'BM4226',
+            name: 'Thesis',
+            credits: 6,
+          },
+        ],
+        electives: [
+          {
+            code: 'BM4113(a)',
+            name: 'Internship',
+            credits: 3,
+          },
+          {
+            code: 'BM4113(b)',
+            name: 'Business Startups',
+            credits: 3,
+          },
+        ],
         electiveCreditsRequired: 0,
       },
     },
