@@ -3286,6 +3286,642 @@ export const subjectData: FacultyMap = {
         electiveCreditsRequired: 0,
       },
     },
+
+    'EcoBusiness Management': {  // M - EcoBusiness Management -
+      'Semester 1': {
+        core: [
+          {
+            code: 'EBM1112',
+            name: 'Environmental Appreciation & Communication',
+            credits: 2,
+          },
+          {
+            code: 'EBM1123',
+            name: 'Principles of Management',
+            credits: 3,
+          },
+          {
+            code: 'EBM1133',
+            name: 'Business Mathematics',
+            credits: 3,
+          },
+          {
+            code: 'EBM1143',
+            name: 'Fundamentals of Economics',
+            credits: 3,
+          },
+          {
+            code: 'EBM1153',
+            name: 'Introduction to ICT and Computer Applications',
+            credits: 3,
+          },
+          {
+            code: 'EBM1163',
+            name: 'Business English I',
+            credits: 3,
+          },
+        ],
+        electives: [],
+        electiveCreditsRequired: 0,
+      },
+
+      'Semester 2': {
+        core: [
+          {
+            code: 'EBM1212',
+            name: 'Environmental Management',
+            credits: 2,
+          },
+          {
+            code: 'EBM1223',
+            name: 'Business Statistics',
+            credits: 3,
+          },
+          {
+            code: 'EBM1232',
+            name: 'Human Ecology & Sustainable Development',
+            credits: 2,
+          },
+          {
+            code: 'EBM1242',
+            name: 'Personality & Professional Development',
+            credits: 2,
+          },
+          {
+            code: 'EBM1253',
+            name: 'Organizational Behaviour',
+            credits: 3,
+          },
+          {
+            code: 'EBM1263',
+            name: 'Financial Accounting',
+            credits: 3,
+          },
+          {
+            code: 'EBM1273',
+            name: 'Business English II',
+            credits: 3, 
+          },
+        ],
+        electives: [],
+        electiveCreditsRequired: 0,
+      },
+
+      'Semester 3': {
+        core: [
+          {
+            code: 'EBM2111',
+            name: 'Industrial Exposure',
+            credits: 1, 
+          },
+          {
+            code: 'EBM2123',
+            name: 'Managerial Economics',
+            credits: 3, 
+          },
+          {
+            code: 'EBM2133',
+            name: 'Human Resource Management',
+            credits: 3, 
+          },
+          {
+            code: 'EBM2143',
+            name: 'Green Marketing',
+            credits: 3, 
+          },
+          {
+            code: 'EBM2152',
+            name: 'Energy & Industrial Resource Management',
+            credits: 2, 
+          },
+          {
+            code: 'EBM2162',
+            name: 'Natural Resource Management & Environmental Law',
+            credits: 2, 
+          },
+          {
+            code: 'EBM2173',
+            name: 'Business Communication I',
+            credits: 3, 
+          },
+        ],
+        electives: [],
+        electiveCreditsRequired: 0,
+      },
+
+      'Semester 4': {
+        core: [
+          {
+            code: 'EBM2213',
+            name: 'Management Accountancy',
+            credits: 3, 
+          },
+          {
+            code: 'EBM2222',
+            name: 'Tools for Environmental Assessment',
+            credits: 2, 
+          },
+          {
+            code: 'EBM2232',
+            name: 'Management Information Systems',
+            credits: 2, 
+          },
+          {
+            code: 'EBM2242',
+            name: 'Geographical Information Systems',
+            credits: 2, 
+          },
+          {
+            code: 'EBM2251',
+            name: 'Occupational Health & Safety Management',
+            credits: 1, 
+          },
+           {
+            code: 'EBM2263',
+            name: 'Commercial Law',
+            credits: 3, 
+          },
+          {
+            code: 'EBM2273',
+            name: 'Business Communication II',
+            credits: 3, 
+          },
+        ],
+        electives: [],
+        electiveCreditsRequired: 0,
+      },
+
+      'Semester 5': {
+        core: [
+          {
+            code: 'EBM3113',
+            name: 'Sustainable Operations Management',
+            credits: 3,
+          },
+          {
+            code: 'EBM3122',
+            name: 'Green Supply Chain Management',
+            credits: 2, 
+          },
+          {
+            code: 'EBM3133',
+            name: 'Environmental Footprint,Management System Standards & Compliance Auditing',
+            credits: 3,
+          },
+          {
+            code: 'EBM3142',
+            name: 'EcoAccounting & Finance',
+            credits: 2, 
+          },
+          {
+            code: 'EBM3153',
+            name: 'Entrepreneurship & Small Business Management',
+            credits: 3, 
+          },
+          {
+            code: 'EBM3162',
+            name: 'Research Methodology & Academic Writing',
+            credits: 2, 
+          },
+          {
+            code: 'EBM3172',
+            name: 'Economics of Environment & Natural Resources',
+            credits: 2, 
+          },
+        ],
+        electives: [],
+        electiveCreditsRequired: 0,
+      },
+
+      'Semester 6': {
+        core: [
+          {
+            code: 'EBM3213',
+            name: 'Operations Research',
+            credits: 3, 
+          },
+          
+          {
+            code: 'EBM3222',
+            name: 'Research Methods in EcoBusiness Management',
+            credits: 2,
+          },
+          {
+            code: 'EBM3232',
+            name: 'Data Analysis and Interpretation',
+            credits: 2, 
+          },
+          {
+            code: 'EBM3242',
+            name: 'Organizational Process Development & Excellence',
+            credits: 2, 
+          },
+           {
+            code: 'EBM3252',
+            name: 'Resource Efficient Cleaner Production',
+            credits: 2, 
+          },
+          {
+            code: 'EBM3262',
+            name: 'Eco Design & Life Cycle Assessment',
+            credits: 2, 
+          },
+           {
+            code: 'EBM3272',
+            name: 'Industrial Ecology',
+            credits: 2, 
+          },
+        ],
+        electives: [],
+        electiveCreditsRequired: 3,
+      },
+
+      'Semester 7': { 
+        core: [
+          {
+            code: 'EBM4112',
+            name: 'Project Management',
+            credits: 2,
+          },
+          {
+            code: 'EBM4121',
+            name: 'Sustainable Event Management',
+            credits: 1,
+          },
+          {
+            code: 'EBM4133',
+            name: 'Strategic Management',
+            credits: 3,
+          },
+          {
+            code: 'EBM4142',
+            name: 'Business Compliances & Social Responsibility',
+            credits: 2,
+          },
+          {
+            code: 'EBM4152',
+            name: 'Creativity & Innovations Management',
+            credits: 2,
+          },
+          {
+            code: 'EBM4162',
+            name: 'Modelling EcoBusiness',
+            credits: 2,
+          },
+          {
+            code: 'EBM4172',
+            name: 'Eco-labelling and Green Procurement',
+            credits: 2,
+          },
+          {
+            code: 'EBM4181',
+            name: 'Trends in EcoBusiness',
+            credits: 1,
+          },
+        ],
+        electives: [],
+        electiveCreditsRequired: 0,
+      },
+
+      'Semester 8': {
+        core: [
+          {
+            code: 'EBM4216',
+            name: 'Thesis',
+            credits: 6,
+          },
+          {
+            code: 'EBM4223',
+            name: 'Internship',
+            credits: 3,
+          },
+        ],
+        electives: [],
+        electiveCreditsRequired: 0,
+      },
+    },
+
+    'Hospitality Management': {  // M - Hospitality Management -
+      'Semester 1': {
+        core: [
+          {
+            code: 'HM1113',
+            name: 'Introduction to Tourism & Hospitality',
+            credits: 3,
+          },
+          {
+            code: 'HM1123',
+            name: 'Principles of Management',
+            credits: 3,
+          },
+          {
+            code: 'HM1133',
+            name: 'Business Mathematics',
+            credits: 3,
+          },
+          {
+            code: 'HM1143',
+            name: 'Fundamentals of Economics',
+            credits: 2,
+          },
+          {
+            code: 'HM1153',
+            name: 'Introduction to ICT and Computer Applications',
+            credits: 3,
+          },
+          {
+            code: 'HM1163',
+            name: 'Business English I',
+            credits: 3,
+          },
+        ],
+        electives: [],
+        electiveCreditsRequired: 0,
+      },
+
+      'Semester 2': {
+        core: [
+          {
+            code: 'HM1213',
+            name: 'Recreation & Tourism Resources',
+            credits: 3,
+          },
+          {
+            code: 'HM1223',
+            name: 'Business Statistics',
+            credits: 3,
+          },
+          {
+            code: 'HM1233',
+            name: 'Business Accounting',
+            credits: 3,
+          },
+          {
+            code: 'HM1242',
+            name: 'Personality & Professional Development',
+            credits: 2,
+          },
+          {
+            code: 'HM1253',
+            name: 'Organizational Behaviour',
+            credits: 3,
+          },
+          {
+            code: 'HM1263',
+            name: 'Business English II',
+            credits: 3, 
+          },
+        ],
+        electives: [],
+        electiveCreditsRequired: 0,
+      },
+
+      'Semester 3': {
+        core: [
+          {
+            code: 'HM2113',
+            name: 'Front Office Management',
+            credits: 3, 
+          },
+          {
+            code: 'HM2123',
+            name: 'Marketing Management',
+            credits: 3, 
+          },
+          {
+            code: 'HM2133',
+            name: 'Human Resource Management',
+            credits: 3, 
+          },
+          {
+            code: 'HM2142',
+            name: 'Service Quality Management',
+            credits: 2, 
+          },
+          {
+            code: 'HM2152',
+            name: 'Creative Content Design for Tourism and Hospitality',
+            credits: 2, 
+          },
+          {
+            code: 'HM2163',
+            name: 'Business Communication I',
+            credits: 3, 
+          },
+        ],
+        electives: [],
+        electiveCreditsRequired: 0,
+      },
+
+      'Semester 4': {
+        core: [
+          {
+            code: 'HM2213',
+            name: 'Hotel Housekeeping Management',
+            credits: 2, 
+          },
+          {
+            code: 'HM2222',
+            name: 'Marketing for Tourism & Hospitality',
+            credits: 2, 
+          },
+          {
+            code: 'HM2232',
+            name: 'Hospitality Accounting',
+            credits: 2, 
+          },
+          {
+            code: 'HM2243',
+            name: 'Legal & Administrative Environment of Hospitality',
+            credits: 3, 
+          },
+          {
+            code: 'HM2263',
+            name: 'Business Communication II',
+            credits: 3, 
+          },
+        ],
+        electives: [
+          {
+            code: 'HM2253A',
+            name: 'German for Tourism I',
+            credits: 3, 
+          },
+          {
+            code: 'HM2253B',
+            name: 'Japanese for Tourism I',
+            credits: 3, 
+          },
+          {
+            code: 'HM2253C',
+            name: 'Chinese for Tourism I',
+            credits: 3, 
+          }, 
+        ],
+        electiveCreditsRequired: 0,
+      },
+
+      'Semester 5': {
+        core: [
+          {
+            code: 'HM3113',
+            name: 'Food & Beverage Management I',
+            credits: 3,
+          },
+          {
+            code: 'HM3122',
+            name: 'Greening Tourism and Hospitality',
+            credits: 2, 
+          },
+          {
+            code: 'HM3133',
+            name: 'Inter-cultural Communication for Tourism',
+            credits: 3,
+          },
+          {
+            code: 'HM3143',
+            name: 'Entrepreneurship & Small Business Management',
+            credits: 3, 
+          },
+          {
+            code: 'HM3152',
+            name: 'Research Methodology & Academic Writing',
+            credits: 2, 
+          },
+        ],
+        electives: [
+          {
+            code: 'HM3163A',
+            name: 'German for Tourism II',
+            credits: 3, 
+          },
+          {
+            code: 'HM3163B',
+            name: 'Japanese for Tourism II',
+            credits: 3, 
+          },
+          {
+            code: 'HM3163C',
+            name: 'Chinese for Tourism II',
+            credits: 3, 
+          }, 
+        ],
+        electiveCreditsRequired: 0,
+      },
+
+      'Semester 6': {
+        core: [
+          {
+            code: 'HM3213',
+            name: 'Food & Beverage Management II',
+            credits: 3, 
+          },
+          {
+            code: 'HM3223',
+            name: 'Professional Cookery I',
+            credits: 3,
+          },
+          {
+            code: 'HM3243',
+            name: 'Research Methods in Tourism & Hospitality',
+            credits: 3, 
+          },
+        ],
+        electives: [
+          {
+            code: 'HM3232A',
+            name: 'Event Management',
+            credits: 2,
+          },
+          {
+            code: 'HM3232B',
+            name: 'Spa Management',
+            credits: 2,
+          },
+          {
+            code: 'HM3253A',
+            name: 'German for Tourism III',
+            credits: 3, 
+          },
+          {
+            code: 'HM3253B',
+            name: 'Japanese for Tourism III',
+            credits: 3, 
+          },
+          {
+            code: 'HM3253C',
+            name: 'Chinese for Tourism III',
+            credits: 3, 
+          },
+        ],
+        electiveCreditsRequired: 3,
+      },
+
+      'Semester 7': { 
+        core: [
+          {
+            code: 'HM4112',
+            name: 'Resort Planning , Development & Management',
+            credits: 2,
+          },
+          {
+            code: 'HM4122',
+            name: 'E-Hospitality',
+            credits: 2,
+          },
+          {
+            code: 'HM4133',
+            name: 'Workshop in Tourism & Hospitality',
+            credits: 3,
+          },
+          {
+            code: 'HM4143',
+            name: 'Strategic Management',
+            credits: 3,
+          },
+          {
+            code: 'HM4163',
+            name: 'Professional Cookery II',
+            credits: 3,
+          },
+        ],
+        electives: [
+           {
+            code: 'HM4153A',
+            name: 'German for Tourism IV',
+            credits: 3, 
+          },
+          {
+            code: 'HM4153B',
+            name: 'Japanese for Tourism IV',
+            credits: 3, 
+          },
+          {
+            code: 'HM4153C',
+            name: 'Chinese for Tourism IV',
+            credits: 3, 
+          },
+        ],
+        electiveCreditsRequired: 0,
+      },
+
+      'Semester 8': {
+        core: [
+          {
+            code: 'HM4216',
+            name: 'Thesis',
+            credits: 6,
+          },
+          {
+            code: 'HM4223',
+            name: 'Internship',
+            credits: 3,
+          },
+        ],
+        electives: [],
+        electiveCreditsRequired: 0,
+      },
+    },
   },
 }
 
