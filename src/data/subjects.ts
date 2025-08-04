@@ -1935,12 +1935,12 @@ export const subjectData: FacultyMap = {
         ],
         electives: [
           {
-            code: 'FM3253',
+            code: 'FM3253A',
             name: 'Entrepreneurship & Small Business Management',
             credits: 3,
           },
           {
-            code: 'FM3253',
+            code: 'FM3253B',
             name: 'Innovations and Intellectual Property Management',
             credits: 3,
           },
@@ -1978,12 +1978,12 @@ export const subjectData: FacultyMap = {
         ],
         electives: [
           {
-            code: 'FM4152',
+            code: 'FM4152A',
             name: 'Modelling Eco Business',
             credits: 2,
           },
           {
-            code: 'FM4152',
+            code: 'FM4152B',
             name: 'Development Economics',
             credits: 2,
           },
@@ -2510,12 +2510,12 @@ export const subjectData: FacultyMap = {
         ],
         electives: [
           {
-            code: 'BM3152(a)',
+            code: 'BM3152A',
             name: 'Indigenous Management Practices',
             credits: 2, // Virtual Credits
           },
           {
-            code: 'BM3152(b)**',
+            code: 'BM3152B**',
             name: 'Venture Creation',
             credits: 2, // Virtual Credits
           },
@@ -2559,12 +2559,12 @@ export const subjectData: FacultyMap = {
         ],
         electives: [
           {
-            code: 'BM3262(a)',
+            code: 'BM3262A',
             name: 'Taxation',
             credits: 2,
           },
           {
-            code: 'BM3262(b)**',
+            code: 'BM3262B**',
             name: 'Entrepreneurship Growth Management',
             credits: 2,
           },
@@ -2607,37 +2607,37 @@ export const subjectData: FacultyMap = {
         ],
         electives: [
            {
-            code: 'BM4172(a)',
+            code: 'BM4172A',
             name: 'Counselling in Organizations',
             credits: 2,
           },
           {
-            code: 'BM4172(b)',
+            code: 'BM4172B',
             name: 'Supply Chain Management',
             credits: 2,
           },
           {
-            code: 'BM4172(c)',
+            code: 'BM4172C',
             name: 'Company and Banking Law',
             credits: 2,
           },
           {
-            code: 'BM4182(a)**',
+            code: 'BM4182A**',
             name: 'Business Plan Development',
             credits: 2,
           },
           {
-            code: 'BM4182(b)',
+            code: 'BM4182B',
             name: 'Business Analytics',
             credits: 2,
           },
            {
-            code: 'BM4192(a)**',
+            code: 'BM4192A**',
             name: 'Graphic Designing for Businesses',
             credits: 2,
           },
           {
-            code: 'BM4182(b)',
+            code: 'BM4192B',
             name: 'Audit and Assurance ',
             credits: 2,
           },
@@ -2655,16 +2655,634 @@ export const subjectData: FacultyMap = {
         ],
         electives: [
           {
-            code: 'BM4113(a)',
+            code: 'BM4213A',
             name: 'Internship',
             credits: 3,
           },
           {
-            code: 'BM4113(b)',
+            code: 'BM4213B',
             name: 'Business Startups',
             credits: 3,
           },
         ],
+        electiveCreditsRequired: 0,
+      },
+    },
+    
+    'Marketing Management': {  // M - Marketing Management -
+      'Semester 1': {
+        core: [
+          {
+            code: 'MM1113',
+            name: 'Principles of Management',
+            credits: 3,
+          },
+          {
+            code: 'MM1123',
+            name: 'Financial Accounting',
+            credits: 3,
+          },
+          {
+            code: 'MM1133',
+            name: 'Business Mathematics',
+            credits: 3,
+          },
+          {
+            code: 'MM1142',
+            name: 'Micro Economics',
+            credits: 2,
+          },
+          {
+            code: 'MM1153',
+            name: 'Introduction to ICT and Computer Applications',
+            credits: 3,
+          },
+          {
+            code: 'MM1163',
+            name: 'Business English I',
+            credits: 3,
+          },
+        ],
+        electives: [],
+        electiveCreditsRequired: 0,
+      },
+
+      'Semester 2': {
+        core: [
+          {
+            code: 'MM1213',
+            name: 'Principles of Marketing',
+            credits: 3,
+          },
+          {
+            code: 'MM1223',
+            name: 'Business Statistics',
+            credits: 3,
+          },
+          {
+            code: 'MM1232',
+            name: 'Sociology & Psychology',
+            credits: 2,
+          },
+          {
+            code: 'MM1242',
+            name: 'Macro Economics',
+            credits: 2,
+          },
+          {
+            code: 'MM1252',
+            name: 'Web Technology',
+            credits: 2,
+          },
+          {
+            code: 'MM1263',
+            name: 'Business English II',
+            credits: 3, 
+          },
+        ],
+        electives: [],
+        electiveCreditsRequired: 0,
+      },
+
+      'Semester 3': {
+        core: [
+          {
+            code: 'MM2111',
+            name: 'Academic Writing',
+            credits: 1, 
+          },
+          {
+            code: 'MM2123',
+            name: 'Marketing Management',
+            credits: 3, 
+          },
+          {
+            code: 'MM2133',
+            name: 'Organizational Behaviour',
+            credits: 3, 
+          },
+          {
+            code: 'MM2143',
+            name: 'Human Resource Management',
+            credits: 3, 
+          },
+          {
+            code: 'MM2152',
+            name: 'Managerial Economics',
+            credits: 2, 
+          },
+          {
+            code: 'MM2162',
+            name: 'Fine Arts for Marketing Profession',
+            credits: 2, 
+          },
+          {
+            code: 'MM2173',
+            name: 'Business Communication I',
+            credits: 3, 
+          },
+        ],
+        electives: [],
+        electiveCreditsRequired: 0,
+      },
+
+      'Semester 4': {
+        core: [
+          {
+            code: 'MM2213',
+            name: 'Consumer Behaviour',
+            credits: 3, 
+          },
+          {
+            code: 'MM2223',
+            name: 'Management Accountancy',
+            credits: 3, 
+          },
+          {
+            code: 'MM2232',
+            name: 'Management Information Systems',
+            credits: 2, 
+          },
+          {
+            code: 'MM2243',
+            name: 'Entrepreneurship & Small Business Management',
+            credits: 3, 
+          },
+          {
+            code: 'MM2253',
+            name: 'Legal Aspects in Marketing',
+            credits: 3, 
+          },
+          {
+            code: 'MM2263',
+            name: 'Business Communication II',
+            credits: 3, 
+          },
+        ],
+        electives: [],
+        electiveCreditsRequired: 0,
+      },
+
+      'Semester 5': {
+        core: [
+          {
+            code: 'MM3113',
+            name: 'Sales Management',
+            credits: 3,
+          },
+          {
+            code: 'MM3123',
+            name: 'Integrated Marketing Communication',
+            credits: 3, 
+          },
+          {
+            code: 'MM3133',
+            name: 'Customer Relationship Management',
+            credits: 3,
+          },
+          {
+            code: 'MM3142',
+            name: 'Sustainability Marketing',
+            credits: 2, 
+          },
+          {
+            code: 'MM3153',
+            name: 'Services Marketing',
+            credits: 3, 
+          },
+          {
+            code: 'MM3162',
+            name: 'Digital Marketing',
+            credits: 2, 
+          },
+           {
+            code: 'MM3172',
+            name: 'Social Marketing',
+            credits: 2, 
+          },
+        ],
+        electives: [],
+        electiveCreditsRequired: 0,
+      },
+
+      'Semester 6': {
+        core: [
+          {
+            code: 'MM3212',
+            name: 'B 2 B Marketing',
+            credits: 2, 
+          },
+          
+          {
+            code: 'MM3223',
+            name: 'Retail Marketing Management',
+            credits: 3,
+          },
+          {
+            code: 'MM3233',
+            name: 'Logistics Management & Supply Chain',
+            credits: 3, 
+          },
+          {
+            code: 'MM3243',
+            name: 'Operational Research',
+            credits: 3, 
+          },
+          {
+            code: 'MM3263',
+            name: 'Research Methodology', 
+            credits: 3, 
+          },
+        ],
+        electives: [
+          {
+            code: 'MM3252A',
+            name: 'Strategic Management',
+            credits: 2,
+          },
+          {
+            code: 'MM3252B',
+            name: 'Project Management',
+            credits: 2,
+          },
+        ],
+        electiveCreditsRequired: 3,
+      },
+
+      'Semester 7': { 
+        core: [
+          {
+            code: 'MM4113',
+            name: 'Strategic Marketing Management',
+            credits: 3,
+          },
+          {
+            code: 'MM4123',
+            name: 'Brand Management',
+            credits: 3,
+          },
+          {
+            code: 'MM4132',
+            name: 'Marketing Research',
+            credits: 2,
+          },
+          {
+            code: 'MM4143',
+            name: 'Global Marketing Strategy',
+            credits: 3,
+          },
+          {
+            code: 'MM4153',
+            name: 'Date Analysis Methods',
+            credits: 3,
+          },
+          {
+            code: 'MM4161',
+            name: 'vent Management',
+            credits: 1,
+          },
+        ],
+        electives: [],
+        electiveCreditsRequired: 0,
+      },
+
+      'Semester 8': {
+        core: [
+          {
+            code: 'MM4216',
+            name: 'Thesis',
+            credits: 6,
+          },
+          {
+            code: 'MM4223',
+            name: 'Internship',
+            credits: 3,
+          },
+        ],
+        electives: [],
+        electiveCreditsRequired: 0,
+      },
+    },
+
+    'Tourism Management': {  // M - Tourism Management -
+      'Semester 1': {
+        core: [
+          {
+            code: 'TM1113',
+            name: 'Introduction to Tourism & Hospitality',
+            credits: 3,
+          },
+          {
+            code: 'TM1123',
+            name: 'Principles of Management',
+            credits: 3,
+          },
+          {
+            code: 'TM1133',
+            name: 'Business Mathematics',
+            credits: 3,
+          },
+          {
+            code: 'TM1143',
+            name: 'Fundamentals of Economics',
+            credits: 2,
+          },
+          {
+            code: 'TM1153',
+            name: 'Introduction to ICT and Computer Applications',
+            credits: 3,
+          },
+          {
+            code: 'TM1163',
+            name: 'Business English I',
+            credits: 3,
+          },
+        ],
+        electives: [],
+        electiveCreditsRequired: 0,
+      },
+
+      'Semester 2': {
+        core: [
+          {
+            code: 'TM1213',
+            name: 'Recreation & Tourism Resources',
+            credits: 3,
+          },
+          {
+            code: 'TM1223',
+            name: 'Business Statistics',
+            credits: 3,
+          },
+          {
+            code: 'TM1233',
+            name: 'Business Accounting',
+            credits: 3,
+          },
+          {
+            code: 'TM1242',
+            name: 'Personality & Professional Development',
+            credits: 2,
+          },
+          {
+            code: 'TM1253',
+            name: 'Organizational Behaviour',
+            credits: 3,
+          },
+          {
+            code: 'TM1263',
+            name: 'Business English II',
+            credits: 3, 
+          },
+        ],
+        electives: [],
+        electiveCreditsRequired: 0,
+      },
+
+      'Semester 3': {
+        core: [
+          {
+            code: 'TM2113',
+            name: 'Hospitality Management',
+            credits: 3, 
+          },
+          {
+            code: 'TM2123',
+            name: 'Marketing Management',
+            credits: 3, 
+          },
+          {
+            code: 'TM2133',
+            name: 'Human Resource Management',
+            credits: 3, 
+          },
+          {
+            code: 'TM2142',
+            name: 'Service Quality Management',
+            credits: 2, 
+          },
+          {
+            code: 'TM2152',
+            name: 'Creative Content Design for Tourism and Hospitality',
+            credits: 2, 
+          },
+          {
+            code: 'TM2163',
+            name: 'Business Communication I',
+            credits: 3, 
+          },
+        ],
+        electives: [],
+        electiveCreditsRequired: 0,
+      },
+
+      'Semester 4': {
+        core: [
+          {
+            code: 'TM2212',
+            name: 'Tourism Economics',
+            credits: 2, 
+          },
+          {
+            code: 'TM2222',
+            name: 'Marketing for Tourism & Hospitality',
+            credits: 2, 
+          },
+          {
+            code: 'TM2233',
+            name: 'Airline operations',
+            credits: 3, 
+          },
+          {
+            code: 'TM2243',
+            name: 'Legal & Administrative Environment of Tourism',
+            credits: 3, 
+          },
+          {
+            code: 'TM2263',
+            name: 'Business Communication II',
+            credits: 3, 
+          },
+        ],
+        electives: [
+          {
+            code: 'TM2253A',
+            name: 'German for Tourism I',
+            credits: 3, 
+          },
+          {
+            code: 'TM2253B',
+            name: 'Japanese for Tourism I',
+            credits: 3, 
+          },
+          {
+            code: 'TM2253C',
+            name: 'Chinese for Tourism I',
+            credits: 3, 
+          }, 
+        ],
+        electiveCreditsRequired: 0,
+      },
+
+      'Semester 5': {
+        core: [
+          {
+            code: 'TM3112',
+            name: 'Special Interest Tourism',
+            credits: 2,
+          },
+          {
+            code: 'TM3122',
+            name: 'Greening Tourism and Hospitality',
+            credits: 2, 
+          },
+          {
+            code: 'TM3133',
+            name: 'Inter-cultural Communication for Tourism',
+            credits: 3,
+          },
+          {
+            code: 'TM3143',
+            name: 'Entrepreneurship & Small Business Management',
+            credits: 3, 
+          },
+          {
+            code: 'TM3152',
+            name: 'Research Methodology & Academic Writing',
+            credits: 2, 
+          },
+        ],
+        electives: [
+          {
+            code: 'TM3163A',
+            name: 'German for Tourism II',
+            credits: 3, 
+          },
+          {
+            code: 'TM3163B',
+            name: 'Japanese for Tourism II',
+            credits: 3, 
+          },
+          {
+            code: 'TM3163C',
+            name: 'Chinese for Tourism II',
+            credits: 3, 
+          }, 
+        ],
+        electiveCreditsRequired: 0,
+      },
+
+      'Semester 6': {
+        core: [
+          {
+            code: 'TM3213',
+            name: 'Tours & Travel Agency Operations',
+            credits: 3, 
+          },
+          
+          {
+            code: 'TM3222',
+            name: 'Tourism Planning',
+            credits: 2,
+          },
+          {
+            code: 'TM3243',
+            name: 'Research Methods in Tourism & Hospitality',
+            credits: 3, 
+          },
+          {
+            code: 'TM3262',
+            name: 'Project Management',
+            credits: 2, 
+          },
+        ],
+        electives: [
+          {
+            code: 'TM3232A',
+            name: 'Event Management',
+            credits: 2,
+          },
+          {
+            code: 'TM3232B',
+            name: 'Spa Management',
+            credits: 2,
+          },
+          {
+            code: 'TM3253A',
+            name: 'German for Tourism III',
+            credits: 3, 
+          },
+          {
+            code: 'TM3253B',
+            name: 'Japanese for Tourism III',
+            credits: 3, 
+          },
+          {
+            code: 'TM3253C',
+            name: 'Chinese for Tourism III',
+            credits: 3, 
+          },
+        ],
+        electiveCreditsRequired: 3,
+      },
+
+      'Semester 7': { 
+        core: [
+          {
+            code: 'TM4112',
+            name: 'Resort Planning & Management',
+            credits: 2,
+          },
+          {
+            code: 'TM4123',
+            name: 'E-Tourism',
+            credits: 3,
+          },
+          {
+            code: 'TM4133',
+            name: 'Workshop in Tourism & Hospitality',
+            credits: 3,
+          },
+          {
+            code: 'TM4143',
+            name: 'Strategic Management',
+            credits: 3,
+          },
+        ],
+        electives: [
+           {
+            code: 'TM4153A',
+            name: 'German for Tourism IV',
+            credits: 3, 
+          },
+          {
+            code: 'TM4153B',
+            name: 'Japanese for Tourism IV',
+            credits: 3, 
+          },
+          {
+            code: 'TM4153C',
+            name: 'Chinese for Tourism IV',
+            credits: 3, 
+          },
+        ],
+        electiveCreditsRequired: 0,
+      },
+
+      'Semester 8': {
+        core: [
+          {
+            code: 'TM4216',
+            name: 'Thesis',
+            credits: 6,
+          },
+          {
+            code: 'TM4223',
+            name: 'Internship',
+            credits: 3,
+          },
+        ],
+        electives: [],
         electiveCreditsRequired: 0,
       },
     },
