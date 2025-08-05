@@ -2515,12 +2515,12 @@ export const subjectData: FacultyMap = {
             credits: 2, // Virtual Credits
           },
           {
-            code: 'BM3152B**',
+            code: 'BM3152B',
             name: 'Venture Creation',
             credits: 2, // Virtual Credits
           },
         ],
-        electiveCreditsRequired: 0,
+        electiveCreditsRequired: 2,
       },
 
       'Semester 6': {
@@ -2564,12 +2564,12 @@ export const subjectData: FacultyMap = {
             credits: 2,
           },
           {
-            code: 'BM3262B**',
+            code: 'BM3262B',
             name: 'Entrepreneurship Growth Management',
             credits: 2,
           },
         ],
-        electiveCreditsRequired: 3,
+        electiveCreditsRequired: 2,
       },
 
       'Semester 7': { 
@@ -2622,7 +2622,7 @@ export const subjectData: FacultyMap = {
             credits: 2,
           },
           {
-            code: 'BM4182A**',
+            code: 'BM4182A',
             name: 'Business Plan Development',
             credits: 2,
           },
@@ -2632,7 +2632,7 @@ export const subjectData: FacultyMap = {
             credits: 2,
           },
            {
-            code: 'BM4192A**',
+            code: 'BM4192A',
             name: 'Graphic Designing for Businesses',
             credits: 2,
           },
@@ -2642,7 +2642,7 @@ export const subjectData: FacultyMap = {
             credits: 2,
           },
         ],
-        electiveCreditsRequired: 0,
+        electiveCreditsRequired: 6,
       },
 
       'Semester 8': {
@@ -2665,7 +2665,7 @@ export const subjectData: FacultyMap = {
             credits: 3,
           },
         ],
-        electiveCreditsRequired: 0,
+        electiveCreditsRequired: 3,
       },
     },
     
@@ -2906,7 +2906,7 @@ export const subjectData: FacultyMap = {
             credits: 2,
           },
         ],
-        electiveCreditsRequired: 3,
+        electiveCreditsRequired: 2,
       },
 
       'Semester 7': { 
@@ -2938,7 +2938,7 @@ export const subjectData: FacultyMap = {
           },
           {
             code: 'MM4161',
-            name: 'vent Management',
+            name: 'Event Management',
             credits: 1,
           },
         ],
@@ -3121,7 +3121,7 @@ export const subjectData: FacultyMap = {
             credits: 3, 
           }, 
         ],
-        electiveCreditsRequired: 0,
+        electiveCreditsRequired: 3,
       },
 
       'Semester 5': {
@@ -3169,7 +3169,7 @@ export const subjectData: FacultyMap = {
             credits: 3, 
           }, 
         ],
-        electiveCreditsRequired: 0,
+        electiveCreditsRequired: 3,
       },
 
       'Semester 6': {
@@ -3223,7 +3223,7 @@ export const subjectData: FacultyMap = {
             credits: 3, 
           },
         ],
-        electiveCreditsRequired: 3,
+        electiveCreditsRequired: 5,
       },
 
       'Semester 7': { 
@@ -3266,7 +3266,7 @@ export const subjectData: FacultyMap = {
             credits: 3, 
           },
         ],
-        electiveCreditsRequired: 0,
+        electiveCreditsRequired: 3,
       },
 
       'Semester 8': {
@@ -3533,7 +3533,7 @@ export const subjectData: FacultyMap = {
           },
         ],
         electives: [],
-        electiveCreditsRequired: 3,
+        electiveCreditsRequired: 0,
       },
 
       'Semester 7': { 
@@ -3758,7 +3758,7 @@ export const subjectData: FacultyMap = {
             credits: 3, 
           }, 
         ],
-        electiveCreditsRequired: 0,
+        electiveCreditsRequired: 3,
       },
 
       'Semester 5': {
@@ -3806,7 +3806,7 @@ export const subjectData: FacultyMap = {
             credits: 3, 
           }, 
         ],
-        electiveCreditsRequired: 0,
+        electiveCreditsRequired: 3,
       },
 
       'Semester 6': {
@@ -3854,14 +3854,14 @@ export const subjectData: FacultyMap = {
             credits: 3, 
           },
         ],
-        electiveCreditsRequired: 3,
+        electiveCreditsRequired: 5,
       },
 
       'Semester 7': { 
         core: [
           {
             code: 'HM4112',
-            name: 'Resort Planning , Development & Management',
+            name: 'Resort Planning, Development & Management',
             credits: 2,
           },
           {
@@ -3902,7 +3902,7 @@ export const subjectData: FacultyMap = {
             credits: 3, 
           },
         ],
-        electiveCreditsRequired: 0,
+        electiveCreditsRequired: 3,
       },
 
       'Semester 8': {
