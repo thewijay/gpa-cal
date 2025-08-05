@@ -158,25 +158,27 @@ npx tsc --noEmit
 src/
 ├── components/          # Reusable UI components
 │   ├── ui/             # shadcn/ui components
-│   ├── theme-provider.tsx
-│   └── ErrorBoundary.tsx
+│   └── theme-provider.tsx
 ├── data/               # Static data and types
-│   ├── subjects.ts     # Subject database
+│   ├── subjects/       # Modular subject data by faculty
+│   │   ├── index.ts    # Combines all faculty data
+│   │   ├── computing.ts         # Computing faculty subjects
+│   │   ├── appliedSciences.ts   # Applied Sciences subjects
+│   │   └── managementStudies.ts # Management Studies subjects
+│   ├── subjects.ts     # Main entry point (re-exports)
+│   ├── types.ts        # TypeScript type definitions
 │   ├── grades.ts       # Grade options
 │   └── gradePoints.ts  # Grade point mappings
 ├── pages/              # Route components
 │   ├── MainPage.tsx    # GPA summary and management
 │   └── addGrades.tsx   # Grade entry and editing
-├── utils/              # Utility functions
-│   ├── utils.ts        # General utilities
-│   └── dataExport.ts   # Data import/export
 └── lib/                # Configuration
     └── utils.ts        # Tailwind utilities
 ```
 
 ### Data Flow
 
-1. **Subject Data**: Static data loaded from `data/subjects.ts`
+1. **Subject Data**: Modular data loaded from `data/subjects/` (combined via `data/subjects.ts`)
 2. **Grade Entry**: User input collected in `addGrades.tsx`
 3. **GPA Calculation**: Real-time calculation with validation
 4. **Persistence**: Data saved to localStorage with versioning
@@ -195,27 +197,45 @@ src/
 
 ### Adding New Faculties/Degrees
 
-Edit `src/data/subjects.ts` to add new faculties, degrees, or subjects:
+The subject data is now organized modularly for better maintainability:
+
+**Option 1: Add to existing faculty file**
+Edit the appropriate file in `src/data/subjects/` (e.g., `computing.ts`, `appliedSciences.ts`, `managementStudies.ts`):
 
 ```typescript
-export const subjectData: FacultyMap = {
-  'Your Faculty': {
-    'Your Degree': {
-      'Semester 1': {
-        core: [
-          {
-            code: 'SUB101',
-            name: 'Subject Name',
-            credits: 3,
-          },
-        ],
-        electives: [
-          // Optional electives
-        ],
-        electiveCreditsRequired: 6,
-      },
+// In src/data/subjects/yourFaculty.ts
+import type { DegreeMap } from '../types'
+
+export const yourFacultyData: DegreeMap = {
+  'Your Degree': {
+    'Semester 1': {
+      core: [
+        {
+          code: 'SUB101',
+          name: 'Subject Name',
+          credits: 3,
+        },
+      ],
+      electives: [
+        // Optional electives
+      ],
+      electiveCreditsRequired: 6,
     },
   },
+}
+```
+
+**Option 2: Create new faculty file**
+
+1. Create `src/data/subjects/newFaculty.ts` following the same pattern
+2. Import and add it to `src/data/subjects/index.ts`:
+
+```typescript
+import { newFacultyData } from './newFaculty'
+
+export const subjectData: FacultyMap = {
+  // ...existing faculties...
+  'New Faculty': newFacultyData,
 }
 ```
 
