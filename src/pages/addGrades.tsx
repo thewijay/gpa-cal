@@ -1,5 +1,5 @@
 import { Button } from '../components/ui/button'
-import { ChevronDown } from 'lucide-react'
+import { ChevronDown, ArrowLeft } from 'lucide-react'
 import { useEffect, useState, useCallback } from 'react'
 import {
   subjectData,
@@ -7,8 +7,6 @@ import {
   type SemesterSubjects,
 } from '../data/subjects'
 import { gradeOptions, gradePoints } from '../data/grading'
-import { useTheme } from '../components/theme-provider'
-import { Sun, Moon, ArrowLeft } from 'lucide-react'
 import { useNavigate } from 'react-router-dom'
 import CountUp from 'react-countup'
 import {
@@ -46,7 +44,6 @@ function Grades() {
   const [grades, setGrades] = useState<Record<string, string>>({})
   const [electiveCreditsRequired, setElectiveCreditsRequired] = useState(0)
   const [selectedElectiveCredits, setSelectedElectiveCredits] = useState(0)
-  const { theme, toggleTheme } = useTheme()
 
   const handleSave = () => {
     if (semSelected === DEFAULT_SEMESTER) {
@@ -269,23 +266,21 @@ function Grades() {
         <div className="min-h-screen bg-background text-foreground transition-colors duration-300">
           <div className="container mx-auto px-4 sm:px-6 py-6">
             {/* Header */}
-            <div className="flex justify-center items-center mb-8">
-              <div className="flex items-center gap-4">
-                {isEditing && (
-                  <button
-                    onClick={() => {
-                      localStorage.removeItem('editingSemester')
-                      navigate('/')
-                    }}
-                    className="p-2 rounded-full border border-border bg-card hover:bg-accent transition-colors duration-200"
-                  >
-                    <ArrowLeft className="w-5 h-5" />
-                  </button>
-                )}
-                <h1 className="text-3xl font-bold text-foreground">
-                  {isEditing ? `Edit ${semSelected}` : 'GPA Cal'}
-                </h1>
-              </div>
+            <div className="relative flex justify-center items-center mb-8">
+              {isEditing && (
+                <button
+                  onClick={() => {
+                    localStorage.removeItem('editingSemester')
+                    navigate('/')
+                  }}
+                  className="absolute left-0 p-2 rounded-full border border-border bg-card hover:bg-accent transition-colors duration-200"
+                >
+                  <ArrowLeft className="w-5 h-5" />
+                </button>
+              )}
+              <h1 className="text-3xl font-bold text-foreground">
+                {isEditing ? `Edit ${semSelected}` : 'GPA Cal'}
+              </h1>
             </div>
 
             {/* Dropdowns */}
