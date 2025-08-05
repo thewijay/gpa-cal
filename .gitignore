@@ -69,3 +69,4 @@ jspm_packages/
 
 # Development scripts (optional - remove this line if you want to track cleanup.sh)
 cleanup.sh
+.vercel
