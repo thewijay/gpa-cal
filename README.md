@@ -167,8 +167,7 @@ src/
 │   │   └── managementStudies.ts # Management Studies subjects
 │   ├── subjects.ts     # Main entry point (re-exports)
 │   ├── types.ts        # TypeScript type definitions
-│   ├── grades.ts       # Grade options
-│   └── gradePoints.ts  # Grade point mappings
+│   └── grading.ts      # Grade options and point mappings
 ├── pages/              # Route components
 │   ├── MainPage.tsx    # GPA summary and management
 │   └── addGrades.tsx   # Grade entry and editing
@@ -195,53 +194,9 @@ src/
 
 ## 🔧 Configuration
 
-### Adding New Faculties/Degrees
-
-The subject data is now organized modularly for better maintainability:
-
-**Option 1: Add to existing faculty file**
-Edit the appropriate file in `src/data/subjects/` (e.g., `computing.ts`, `appliedSciences.ts`, `managementStudies.ts`):
-
-```typescript
-// In src/data/subjects/yourFaculty.ts
-import type { DegreeMap } from '../types'
-
-export const yourFacultyData: DegreeMap = {
-  'Your Degree': {
-    'Semester 1': {
-      core: [
-        {
-          code: 'SUB101',
-          name: 'Subject Name',
-          credits: 3,
-        },
-      ],
-      electives: [
-        // Optional electives
-      ],
-      electiveCreditsRequired: 6,
-    },
-  },
-}
-```
-
-**Option 2: Create new faculty file**
-
-1. Create `src/data/subjects/newFaculty.ts` following the same pattern
-2. Import and add it to `src/data/subjects/index.ts`:
-
-```typescript
-import { newFacultyData } from './newFaculty'
-
-export const subjectData: FacultyMap = {
-  // ...existing faculties...
-  'New Faculty': newFacultyData,
-}
-```
-
 ### Customizing Grades
 
-Modify `src/data/grades.ts` and `src/data/gradePoints.ts` for different grading systems.
+Modify `src/data/grading.ts` for different grading systems. This file contains both grade options and their corresponding point values.
 
 ---
 
@@ -273,59 +228,15 @@ The app includes `vercel.json` for proper SPA routing support.
 
 ---
 
-## 🧪 Testing
-
-See [TESTING.md](./TESTING.md) for comprehensive testing guidelines.
-
-### Quick Test
-
-```bash
-# Unit tests (when implemented)
-npm run test
-
-# E2E tests (when implemented)
-npm run test:e2e
-```
-
----
-
 ## 🤝 Contributing
 
-### Development Workflow
+We welcome contributions! Please see our [Contributing Guide](./CONTRIBUTING.md) for detailed information on adding new faculties, development setup, and best practices.
+
+### Quick Start
 
 1. Fork the repository
-2. Create a feature branch: `git checkout -b feature/amazing-feature`
-3. Make your changes
-4. Test thoroughly
-5. Commit with conventional commits: `git commit -m 'feat: add amazing feature'`
-6. Push to your branch: `git push origin feature/amazing-feature`
-7. Open a Pull Request
-
-### Code Standards
-
-- Use TypeScript strict mode
-- Follow React best practices
-- Maintain 100% type coverage
-- Write meaningful commit messages
-- Add JSDoc comments for complex functions
-
----
-
-## 📋 Roadmap
-
-### Planned Features
-
-- [ ] **Data Export/Import**: JSON backup and restore functionality
-- [ ] **Advanced Analytics**: GPA trends and semester comparisons
-- [ ] **Grade Predictor**: Predict required grades for target GPA
-- [ ] **PWA Support**: Offline functionality and app installation
-- [ ] **Accessibility Improvements**: Enhanced screen reader support
-
-### Performance Optimizations
-
-- [ ] **Lazy Loading**: Route-based code splitting
-- [ ] **Virtual Scrolling**: For large subject lists
-- [ ] **Service Worker**: Caching and offline support
-- [ ] **Bundle Analysis**: Further size optimization
+2. Create a feature branch: `git checkout -b feature/your-feature`
+3. Make your changes and test thoroughly
+4. Submit a Pull Request
 
 ---

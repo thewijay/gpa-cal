@@ -6,8 +6,7 @@ import {
   type Subject,
   type SemesterSubjects,
 } from '../data/subjects'
-import { gradeOptions } from '../data/grades'
-import { gradePoints } from '../data/gradePoints'
+import { gradeOptions, gradePoints } from '../data/grading'
 import { useTheme } from '../components/theme-provider'
 import { Sun, Moon, ArrowLeft } from 'lucide-react'
 import { useNavigate } from 'react-router-dom'
@@ -270,7 +269,7 @@ function Grades() {
         <div className="min-h-screen bg-background text-foreground transition-colors duration-300">
           <div className="container mx-auto px-4 sm:px-6 py-6">
             {/* Header */}
-            <div className="flex justify-between items-center mb-8">
+            <div className="flex justify-center items-center mb-8">
               <div className="flex items-center gap-4">
                 {isEditing && (
                   <button
@@ -287,16 +286,6 @@ function Grades() {
                   {isEditing ? `Edit ${semSelected}` : 'GPA Cal'}
                 </h1>
               </div>
-              <button
-                onClick={toggleTheme}
-                className="p-3 rounded-full border border-border bg-card hover:bg-accent transition-colors duration-200 shadow-sm"
-              >
-                {theme === 'dark' ? (
-                  <Sun className="w-5 h-5 text-yellow-500" />
-                ) : (
-                  <Moon className="w-5 h-5 text-blue-600" />
-                )}
-              </button>
             </div>
 
             {/* Dropdowns */}
