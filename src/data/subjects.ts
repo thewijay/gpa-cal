@@ -838,7 +838,7 @@ export const subjectData: FacultyMap = {
           { code: 'DS6106', name: 'Cloud Computing', credits: 2 },
           { code: 'DS6107', name: 'Business Process Management', credits: 2 },
           { code: 'DS6108', name: 'Software Quality Assurance', credits: 2 },
-          { code: 'DS6108', name: 'Fraud and Anomaly Detection', credits: 2 },
+          { code: 'DS6109', name: 'Fraud and Anomaly Detection', credits: 2 },
         ],
         electiveCreditsRequired: 2,
       },
