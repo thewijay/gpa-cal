@@ -5,7 +5,7 @@ import {
   subjectData,
   type Subject,
   type SemesterSubjects,
-} from '../data/subjects'
+} from '../data/subjects/index'
 import { gradeOptions, gradePoints } from '../data/grading'
 import { useNavigate } from 'react-router-dom'
 import CountUp from 'react-countup'

@@ -165,7 +165,6 @@ src/
 │   │   ├── computing.ts         # Computing faculty subjects
 │   │   ├── appliedSciences.ts   # Applied Sciences subjects
 │   │   └── managementStudies.ts # Management Studies subjects
-│   ├── subjects.ts     # Main entry point (re-exports)
 │   ├── types.ts        # TypeScript type definitions
 │   └── grading.ts      # Grade options and point mappings
 ├── pages/              # Route components
@@ -177,7 +176,7 @@ src/
 
 ### Data Flow
 
-1. **Subject Data**: Modular data loaded from `data/subjects/` (combined via `data/subjects.ts`)
+1. **Subject Data**: Modular data loaded from `data/subjects/index.ts`
 2. **Grade Entry**: User input collected in `addGrades.tsx`
 3. **GPA Calculation**: Real-time calculation with validation
 4. **Persistence**: Data saved to localStorage with versioning
