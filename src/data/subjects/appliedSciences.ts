@@ -428,4 +428,53 @@ export const appliedSciences: DegreeMap = {
       electiveCreditsRequired: 0,
     },
   },
+    'Environmental Sciences and Natural Resource Management': {
+    'Semester 1': {
+      core: [
+        {
+          code: 'ESNRM 11301',
+          name: 'Introduction to the Environment and Natural Resources',
+          credits: 1,
+        },
+        {
+          code: 'ESNRM 11202',
+          name: 'Biology I: Cellular and Organismic Biology',
+          credits: 2,
+        },
+        {
+          code: 'ESNRM 11203',
+          name: 'Biology II: Evolution and the Diversity of Life',
+          credits: 2,
+        },
+        {
+          code: 'ESNRM 11104',
+          name: 'Biology - Practical',
+          credits: 1,
+        },
+        {
+          code: 'ESNRM 11205',
+          name: 'General Chemistry',
+          credits: 2,
+        },
+        {
+          code: 'ESNRM 11106',
+          name: 'Inorganic Chemistry for Natural Resource Studies - Practical',
+          credits: 1,
+        },
+        {
+          code: 'ESNRM 11207',
+          name: 'Computer Literacy for Natural Resource Studies (Theory and Practical)',
+          credits: 2,
+        },
+        {
+          code: 'ESNRM 11208',
+          name: 'Mathematics for Natural Resource Studies',
+          credits: 2,
+        },
+        
+      ],
+      electives: [],
+      electiveCreditsRequired: 0,
+    },
+}
 }
